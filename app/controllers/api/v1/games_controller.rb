@@ -1,5 +1,4 @@
 require 'pry'
-require 'rapidapisdk'
 
 class Api::V1::GamesController < ApplicationController
   def index
@@ -8,37 +7,34 @@ class Api::V1::GamesController < ApplicationController
   end
 
   def create
-    game = dictionary_request
-#     game = Game.create(complete: false)
-#     game.words.create(letters: "humble", difficulty: 3, definition: "
-# having or showing a modest or low estimate of one's own importance.")
-# game.words.create(letters: "whale", difficulty: 3, definition: "a very large marine mammal with a streamlined hairless body, a horizontal tail fin, and a blowhole on top of the head for breathing.")
+    body_hash = dictionary_request
+
+    word = body_hash['word']
+    definition = body_hash['results'][0]['definition']
+
+    game = Game.create(complete: false)
+    game.words.create(letters: word, difficulty: 0, definition: definition)
 
     render json: game
   end
 
   def dictionary_request
-    RapidAPI.config(project: ENV['RAPID_API_PROJECT'], token: ENV['RAPID_API_KEY'])
+    begin
+      @resp = Faraday.get 'https://wordsapiv1.p.mashape.com/words?hasDetails=definitions&limit=5&lettersMin=5&lettersMax=10&random=true' do |req|
+        req.headers['X-Mashape-Key'] = 'cXvZHDBJCzmshtUAofR5uVwNwswip14MNyEjsn8SyBC8VbDKrY'
+        req.headers['Accept'] = 'application/json'
+      end
 
-    response = RapidAPI.call('NasaAPI', 'getPictureOfTheDay', {})
-    # begin
-    #
-    #   @resp = Faraday.get 'https://api.github.com/search/repositories' do |req|
-    #     req.params['client_id'] = 'Iv1.34574f5684ab3b14'
-    #     req.params['client_secret'] = 'cb671516b079fe9a4348e86dd3b4895d0a302b2f'
-    #     req.params['q'] = params[:query]
-    #   end
-    #
-    #   body_hash = JSON.parse(@resp.body)
-    #
-    #   if @resp.success?
-    #     @repositories = body_hash['items']
-    #   else
-    #     @error = 'error!'
-    #   end
-    #   rescue Faraday::ConnectionFailed
-    #   @error = "There was a timeout. Please try again."
-    #   end
+      body_hash = JSON.parse(@resp.body)
+
+      if @resp.success?
+        @resp
+      else
+        @error = 'error!'
+      end
+
+    rescue Faraday::ConnectionFailed
+        @error = "There was a timeout. Please try again."
+    end
   end
-
 end

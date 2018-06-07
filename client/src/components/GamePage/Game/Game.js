@@ -5,7 +5,7 @@ class Game extends Component {
 
   renderWords = () => {
     return this.props.game.words.map(word => {
-      return <Word word={word} />;
+      return <Word key={word.id} word={word} />;
     });
   }
 
