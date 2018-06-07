@@ -1,5 +1,5 @@
 class WordsApiService
-  # returns an array of new Word objects based on words from WordsAPI
+  # returns an array of 5 new Word objects based on words from WordsAPI
   def getWords
     words_array = [];
 
@@ -22,12 +22,11 @@ class WordsApiService
 
       # TODO: figure out a faster way to do this with a frequency above 2.5
       if frequency != nil && frequency > 0
-        new_word = Word.create(letters: word, difficulty: 0, definition: definition)
+        
+        difficulty = (1/frequency)*100.floor
+        new_word = Word.create(letters: word, difficulty: difficulty, definition: definition)
 
         words_array.push(new_word);
-        puts "ADDED A NEW WORD WITH FREQUENCY OF #{frequency}"
-        puts "Words array is now #{words_array}"
-
       end
     end
 
