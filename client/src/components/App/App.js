@@ -6,8 +6,17 @@ import ScoresPage from '../ScoresPage/ScoresPage'
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      games: [],
+      scores: []
+    }
+  }
+
   fetchGames = () => {
-    fetch('/games')
+    fetch('/api/v1/games')
     .then(res => res.json()
     .then(json => console.log(json)));
   }
@@ -19,6 +28,7 @@ class App extends Component {
           <NavBar />
 
           <button onClick={this.fetchGames}>Fetch Games</button>
+
           <Route exact path="/" render={() => <div>Welcome to word scramble!</div>} />
           <Route path="/high-scores" component={ScoresPage}/>
         </div>
