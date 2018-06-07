@@ -12,7 +12,7 @@ const NavBar = () => {
       </NavLink>
       <NavLink
         style={{ marginRight: '10px' }}
-        to="/game"
+        to="/play"
       >
         Play
       </NavLink>

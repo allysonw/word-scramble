@@ -33,7 +33,7 @@ class ScoresPage extends Component {
 
   render() {
     const highScores = this.renderHighScores();
-    debugger
+
     return (
       <div className="ScoresPage" >
         {highScores}
