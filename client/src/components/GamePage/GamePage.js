@@ -6,34 +6,26 @@ class GamePage extends Component {
     super(props);
 
     this.state = {
-      game: {}
+      game: null
     }
   }
 
-  componentDidMount = () => {
-    this.createGame();
-    this.fetchGame();
-  }
-
-  createGame = () => {
-    //fetch with a post request to create a new game?
-  }
-
-  fetchGame = () => {
-    fetch('/api/v1/games')
+  fetchNewGame = () => {
+    fetch('/api/v1/games/', { method: 'POST'})
     .then(res => res.json())
     .then(game => {
       this.setState({
         game: game
       });
-      console.log(this.state)
     });
   }
 
   render() {
     return (
       <div className="GamePage" >
-        <Game />
+        <button onClick={this.fetchNewGame}>New Game</button>
+
+        {this.state.game ? <Game game={this.state.game}/> : ''}
       </div>
     );
   }

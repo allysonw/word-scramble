@@ -17,20 +17,11 @@ class App extends Component {
     }
   }
 
-  fetchGames = () => {
-    fetch('/api/v1/games')
-    .then(res => res.json()
-    .then(json => console.log(json)));
-  }
-
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar />
-
-          <button onClick={this.fetchGames}>Fetch Games</button>
-
           <Route exact path="/" render={() => <div>Welcome to word scramble!</div>} />
           <Route path="/high-scores" component={ScoresPage}/>
           <Route path="/play" component={GamePage}/>
