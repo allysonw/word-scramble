@@ -1,24 +1,23 @@
-# README
+# Word Scramble
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![](http://forthebadge.com/images/badges/made-with-ruby.svg)
+![](https://forthebadge.com/images/badges/made-with-javascript.svg)
 
-Things you may want to cover:
+![](https://img.shields.io/badge/Released-June--2018-ff69b4.svg?style=flat-square)
+[![GitHub last commit](https://img.shields.io/github/last-commit/allysonw/word-scramble.svg?style=flat-square)]()
 
-* Ruby version
+Word Scramble is a fun game where your task is to unscramble scrambled words for points!
 
-* System dependencies
+## Installation
+TBD
 
-* Configuration
+## Usage
+TBD
 
-* Database creation
+## Contributing
 
-* Database initialization
+Bug reports and pull requests are welcome on GitHub at https://github.com/allysonw/word-scramble. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-* How to run the test suite
+## License
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The project is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
