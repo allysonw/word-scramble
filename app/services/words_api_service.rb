@@ -3,9 +3,9 @@ class WordsApiService
   def getWords
     words_array = [];
 
-    while words_array.length < 5 do
+    while words_array.length < 2 do
       begin
-        @resp = Faraday.get 'https://wordsapiv1.p.mashape.com/words?hasDetails=definitions&limit=5&lettersMin=5&lettersMax=10&random=true' do |req|
+        @resp = Faraday.get 'https://wordsapiv1.p.mashape.com/words?hasDetails=frequency&limit=5&lettersMin=5&lettersMax=10&random=true' do |req|
           req.headers['X-Mashape-Key'] = ENV['MASHAPE_KEY']
           req.headers['Accept'] = 'application/json'
         end
@@ -17,14 +17,14 @@ class WordsApiService
       end
 
       word = body_hash['word']
-      definition = body_hash['results'][0]['definition']
+      #definition = body_hash['results'][0]['definition']
       frequency = body_hash['frequency']
 
       # TODO: figure out a faster way to do this with a frequency above 2.5
-      if frequency != nil && frequency > 0
-        
+      if frequency != nil && frequency > 2.5
+
         difficulty = (1/frequency)*100.floor
-        new_word = Word.create(letters: word, difficulty: difficulty, definition: definition)
+        new_word = Word.create(letters: word, difficulty: difficulty, definition: '')
 
         words_array.push(new_word);
       end
