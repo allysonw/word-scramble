@@ -14,6 +14,7 @@ class GamePage extends Component {
     fetch('/api/v1/games/', { method: 'POST'})
     .then(res => res.json())
     .then(game => {
+      console.log(game);
       this.setState({
         game: game
       });
