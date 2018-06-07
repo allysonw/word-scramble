@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import NavBar from '../components/NavBar';
-import ScoresPage from '../components/ScoresPage'
+import NavBar from '../NavBar/NavBar';
+import ScoresPage from '../ScoresPage/ScoresPage'
 
 
 class App extends Component {

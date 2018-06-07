@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
-  resources :scores, only: [:index, :update]
-  resources :games, only: [:index, :create, :update, :show, ]
+  namespace :api do
+    namespace :v1 do
+      resources :scores, only: [:index, :update]
+      resources :games, only: [:index, :create, :update, :show, ]
+    end
+  end
 end
