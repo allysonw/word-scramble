@@ -3,7 +3,7 @@ import './Letter.css';
 
 const Letter = (props) => {
   return (
-    <div className="Letter" >
+    <div className={props.solved ? "Letter-solved" : "Letter-unsolved"} >
       {props.letter.toUpperCase()}
     </div>
   );

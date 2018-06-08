@@ -21,7 +21,6 @@ class ScoresPage extends Component {
       this.setState({
         scores: scores
       });
-      console.log(this.state)
     });
   }
 

@@ -1,8 +1,20 @@
-.Letter {
+.Letter-unsolved {
   display: inline-block;
   margin: 10px;
   width: 1.5em;
   color: red;
+  font-family: sans-serif;
+  font-size: 4em;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.Letter-solved {
+  display: inline-block;
+  margin: 10px;
+  width: 1.5em;
+  color: green;
   font-family: sans-serif;
   font-size: 4em;
   border-color: black;

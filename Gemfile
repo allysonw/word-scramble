@@ -32,7 +32,7 @@ gem 'foreman'
 
 gem 'active_model_serializers'
 
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'faraday'
 
 group :development, :test do

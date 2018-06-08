@@ -8,7 +8,8 @@ class Word extends Component {
 
     this.state = {
       letters: this.props.word.letters.split(""),
-      scrambledLetters: Word.randomizeLetters(this.props.word.letters.split(""))
+      scrambledLetters: Word.randomizeLetters(this.props.word.letters.split("")),
+      solved: false
     }
   }
 
@@ -22,9 +23,15 @@ class Word extends Component {
   }
 
   renderLetters = () => {
-    return this.state.scrambledLetters.map((letter, i) => {
-      return <Letter key={i} letter={letter} />;
-    });
+    if (this.state.solved) {
+      return this.state.letters.map((letter, i) => {
+        return <Letter key={i} letter={letter} solved={true}/>;
+      });
+    } else {
+      return this.state.scrambledLetters.map((letter, i) => {
+        return <Letter key={i} letter={letter} solved={false} />;
+      });
+    }
   }
 
   scramble = () => {
@@ -35,14 +42,30 @@ class Word extends Component {
     })
   }
 
+  handleSolved = () => {
+    this.setState({
+      solved: true
+    });
+  }
+
   render() {
     const lettersList = this.renderLetters();
 
     return (
       <div className="Word" >
         {lettersList}
-        <button onClick={this.scramble}>Scramble</button>
-        <WordInput word={this.props.word}/>
+
+        {this.state.solved ?
+          <button onClick={this.scramble} disabled>Scramble</button> :
+          <button onClick={this.scramble}>Scramble</button>
+        }
+
+        {this.state.solved ?
+          '' :
+          <WordInput word={this.props.word} onSolved={this.handleSolved}/>
+        }
+
+        <p>{this.state.solved ? "Correct!" : ''}</p>
       </div>
     );
   }

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import './App.css';
 import NavBar from '../NavBar/NavBar';
 import ScoresPage from '../ScoresPage/ScoresPage'
 import GamePage from '../GamePage/GamePage'
-
-
 
 class App extends Component {
   constructor(props) {
