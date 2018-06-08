@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Letter from './Letter/Letter'
+import WordInput from './WordInput/WordInput'
 
 class Word extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class Word extends Component {
       <div className="Word" >
         {lettersList}
         <button onClick={this.scramble}>Scramble</button>
+        <WordInput word={this.props.word}/>
       </div>
     );
   }
