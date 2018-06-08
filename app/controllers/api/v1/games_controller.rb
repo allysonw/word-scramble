@@ -10,6 +10,7 @@ class Api::V1::GamesController < ApplicationController
 
     game = Game.create(complete: false)
     game.words = words_array
+    game.create_score(value: 0, player: '')
 
     render json: game
   end
