@@ -23,7 +23,7 @@ class Game extends Component {
 
     return (
       <div className="Game" >
-        Game ID: {this.props.game.id}
+        {/* Game ID: {this.props.game.id} */}
 
         {wordsList}
       </div>

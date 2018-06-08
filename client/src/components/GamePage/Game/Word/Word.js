@@ -13,7 +13,8 @@ class Word extends Component {
     }
   }
 
-  static randomizeLetters = (letters) => {
+  static randomizeLetters = (lettersToScramble) => {
+    const letters = lettersToScramble;
     for (let i = letters.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [letters[i], letters[j]] = [letters[j], letters[i]];
@@ -24,18 +25,31 @@ class Word extends Component {
 
   renderLetters = () => {
     if (this.state.solved) {
+
       return this.state.letters.map((letter, i) => {
         return <Letter key={i} letter={letter} solved={true}/>;
       });
     } else {
+
       return this.state.scrambledLetters.map((letter, i) => {
         return <Letter key={i} letter={letter} solved={false} />;
       });
     }
   }
 
+  randomizeThoseLetters = (lettersToScramble) => {
+    const letters = lettersToScramble;
+    for (let i = letters.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [letters[i], letters[j]] = [letters[j], letters[i]];
+    }
+
+    return letters;
+  }
+
   scramble = () => {
-    const scrambledLetters = Word.randomizeLetters(this.state.letters)
+    // pass a copy of letters, not a reference to the actual value in state
+    const scrambledLetters = Word.randomizeLetters(this.state.letters.concat())
 
     this.setState({
       scrambledLetters: scrambledLetters

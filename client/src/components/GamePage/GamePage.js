@@ -8,19 +8,20 @@ import './GamePage.css';
 import wheel from '../../images/loading-wheel.png'
 
 class GamePage extends Component {
-  // Game page should do 1 of 3 things depending on this.props.game.gameLoaded
-  // if false -> render nothing
-  // if fa -> render loading wheel
-  // if game object e.g. {id: 0, words: []} -> render Game component
   checkStateForGameContent = () => {
+    if (this.props.gameLoading === true) {
+     return (
+       <div>
+         <img src={wheel} className="Loading-wheel" />
+       </div>
+     );
 
-     if (this.props.gameLoading === true) {
-       return <img src={wheel} className="Loading-wheel" />
-     } else if (this.props.game !== undefined) {
-       return <Game game={this.props.game}/>
-     } else {
-       return '';
-     }
+    } else if (this.props.game !== undefined) {
+     return <Game game={this.props.game}/>;
+
+    } else {
+     return '';
+    }
   }
 
   render() {
