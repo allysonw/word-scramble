@@ -6,31 +6,29 @@ import { bindActionCreators } from 'redux';
 import { fetchNewGame } from  '../../actions/gameActions.js';
 
 class GamePage extends Component {
-  constructor(props) {
-    super(props);
+  // Game page should do 1 of 3 things depending on this.props.game.gameLoaded
+  // if false -> render nothing
+  // if fa -> render loading wheel
+  // if game object e.g. {id: 0, words: []} -> render Game component
+  checkStateForGameContent = () => {
 
-    this.state = {
-      game: null
-    }
+     if (this.props.gameLoading === true) {
+       return <div>LOADING...</div>
+     } else if (this.props.game !== undefined) {
+       return <Game game={this.props.game}/>
+     } else {
+       return '';
+     }
   }
 
-  // fetchNewGame = () => {
-  //   fetch('/api/v1/games/', { method: 'POST'})
-  //   .then(res => res.json())
-  //   .then(game => {
-  //     console.log(game);
-  //     this.setState({
-  //       game: game
-  //     });
-  //   });
-  // }
-
   render() {
+    const gameContent = this.checkStateForGameContent();
+    1
     return (
       <div className="GamePage" >
         <button onClick={this.props.fetchNewGame}>New Game</button>
 
-        {this.state.game ? <Game game={this.state.game}/> : ''}
+        {gameContent}
       </div>
     );
   }
@@ -38,7 +36,10 @@ class GamePage extends Component {
 
 
 const mapStateToProps = (state) => {
-  return { game: state.game };
+  return {
+           game: state.game.game,
+           gameLoading: state.game.gameLoading
+         };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -46,6 +47,5 @@ const mapDispatchToProps = (dispatch) => {
     fetchNewGame: fetchNewGame
   }, dispatch);
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(GamePage);
