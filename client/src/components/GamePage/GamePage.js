@@ -4,6 +4,8 @@ import Game from './Game/Game';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchNewGame } from  '../../actions/gameActions.js';
+import './GamePage.css';
+import wheel from '../../images/loading-wheel.png'
 
 class GamePage extends Component {
   // Game page should do 1 of 3 things depending on this.props.game.gameLoaded
@@ -13,7 +15,7 @@ class GamePage extends Component {
   checkStateForGameContent = () => {
 
      if (this.props.gameLoading === true) {
-       return <div>LOADING...</div>
+       return <img src={wheel} className="Loading-wheel" />
      } else if (this.props.game !== undefined) {
        return <Game game={this.props.game}/>
      } else {
@@ -23,7 +25,7 @@ class GamePage extends Component {
 
   render() {
     const gameContent = this.checkStateForGameContent();
-    1
+
     return (
       <div className="GamePage" >
         <button onClick={this.props.fetchNewGame}>New Game</button>
