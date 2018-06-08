@@ -6,20 +6,31 @@ class Word extends Component {
     super(props)
 
     this.state = {
-      letters: this.props.word.letters.split("")
+      letters: this.props.word.letters.split(""),
+      scrambledLetters: Word.randomizeLetters(this.props.word.letters.split(""))
     }
   }
 
+  static randomizeLetters = (letters) => {
+    for (let i = letters.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [letters[i], letters[j]] = [letters[j], letters[i]];
+    }
+
+    return letters;
+  }
+
   renderLetters = () => {
-    debugger
-    return this.state.letters.map((letter, i) => {
+    return this.state.scrambledLetters.map((letter, i) => {
       return <Letter key={i} letter={letter} />;
     });
   }
 
   scramble = () => {
+    const scrambledLetters = Word.randomizeLetters(this.state.letters)
+
     this.setState({
-      letters: this.state.letters.reverse()
+      scrambledLetters: scrambledLetters
     })
   }
 
