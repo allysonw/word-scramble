@@ -6,16 +6,8 @@ import NavBar from '../NavBar/NavBar';
 import ScoresPage from '../ScoresPage/ScoresPage'
 import GamePage from '../GamePage/GamePage'
 
+// Main component for the application
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      games: [],
-      scores: []
-    }
-  }
-
   render() {
     return (
       <Router>

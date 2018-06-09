@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Word from './Word/Word';
 
+// Game component holds the words that make up the game
 class Game extends Component {
 
   // Set up list of words to show to the user

@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import Letter from './Letter/Letter'
 import WordInput from './WordInput/WordInput'
 
+// Word component displays the letters making up the word
 class Word extends Component {
   constructor(props) {
     super(props)
 
+    // Maintain internal state to keep track of when word is solved
     this.state = {
+
+      // Holds the word's letters in order (the solution)
       letters: this.props.word.letters.split(""),
+
+      // Scramble leters on creation of the component and store in state
       scrambledLetters: Word.randomizeLetters(this.props.word.letters.split("")),
+
       solved: false
     }
   }
 
+  // Class method for randomizing an array of letters
   static randomizeLetters = (lettersToScramble) => {
     const letters = lettersToScramble;
     for (let i = letters.length - 1; i > 0; i--) {
@@ -23,44 +31,48 @@ class Word extends Component {
     return letters;
   }
 
+  // Render the letters, passing through a prop for whether the
+  // word is solved so Letters know what styling to use
   renderLetters = () => {
     if (this.state.solved) {
 
+      // If solved, unscramble the letters (use the 'letters' state)
       return this.state.letters.map((letter, i) => {
         return <Letter key={i} letter={letter} solved={true}/>;
       });
     } else {
 
+      // If not solved, show the scrambled letters
       return this.state.scrambledLetters.map((letter, i) => {
         return <Letter key={i} letter={letter} solved={false} />;
       });
     }
   }
 
-  randomizeThoseLetters = (lettersToScramble) => {
-    const letters = lettersToScramble;
-    for (let i = letters.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [letters[i], letters[j]] = [letters[j], letters[i]];
-    }
-
-    return letters;
-  }
-
+  // Called when the user clicks the "scramble" button for a word
+  // Initiates shuffling of the letters
   scramble = () => {
-    // pass a copy of letters, not a reference to the actual value in state
+
+    // make a copy of letters, so as not to reference and alter the
+    // actual letters value in state
     const scrambledLetters = Word.randomizeLetters(this.state.letters.concat())
 
+    // Update the Word internal state
     this.setState({
       scrambledLetters: scrambledLetters
     })
   }
 
+  // The WordInput component knows when the word has been solved
+  // and calls this function at that time
   handleSolved = () => {
     this.setState({
       solved: true
     });
 
+    // Pass the info back up the component chain to let the
+    // GamePage component know to update the state indicating
+    // a word has been solved
     this.props.onWordSolved();
   }
 
@@ -68,20 +80,27 @@ class Word extends Component {
     const lettersList = this.renderLetters();
 
     return (
+      // TODO: refactor this method to make more DRY
+
       <div className="Word" >
         {lettersList}
         {/* {this.props.word.definition} TODO */}
 
+        {/*  If solved, disable the scramble button */}
         {this.state.solved ?
           <button onClick={this.scramble} disabled>Scramble</button> :
           <button onClick={this.scramble}>Scramble</button>
         }
 
+        {/* If solved, hide the input */}
+        {/* Give WordInput knowlegde of the word and a callback
+          to use if the word is solved */}
         {this.state.solved ?
           '' :
           <WordInput word={this.props.word} onSolved={this.handleSolved}/>
         }
 
+        {/* If solved, let the user know */}
         <p>{this.state.solved ? "Correct!" : ''}</p>
       </div>
     );
