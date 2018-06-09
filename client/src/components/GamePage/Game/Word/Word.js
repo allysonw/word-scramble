@@ -84,5 +84,20 @@ class Word extends Component {
     );
   }
 }
-
+//
+// const mapStateToProps = (state) => {
+//   return({
+//     letters:
+//     scrambledLetters:
+//     solved:
+//   })
+// };
+//
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({
+//     fetchNewGame: fetchNewGame
+//   }, dispatch);
+// };
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(Word)
 export default Word;

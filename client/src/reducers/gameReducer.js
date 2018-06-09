@@ -5,7 +5,13 @@ export default function gameReducer(state = { gameLoading: false }, action) {
       return {...state, gameLoading: true };
 
     case "ADD_GAME":
-      return {...state, gameLoading: false, game: action.payload};
+      return {...state,
+        gameLoading: false,
+        complete: action.payload.complete,
+        id: action.payload.id,
+        words: action.payload.words,
+        solvedWordCount: 0,
+        score: action.payload.score };
 
     default:
       return state;

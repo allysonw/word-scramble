@@ -9,15 +9,16 @@ import wheel from '../../images/loading-wheel.png'
 
 class GamePage extends Component {
   checkStateForGameContent = () => {
-    if (this.props.gameLoading === true) {
+    if (this.props.game.gameLoading === true) {
      return (
        <div>
          <img src={wheel} className="Loading-wheel" />
        </div>
      );
 
-    } else if (this.props.game !== undefined) {
-     return <Game game={this.props.game}/>;
+   } else if ((this.props.game.id !== undefined) &&
+              (this.props.game.gameLoading === false)) {
+     return <Game game={this.props.game} words={this.props.game.words}/>;
 
     } else {
      return '';
@@ -37,12 +38,10 @@ class GamePage extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
-  return {
-           game: state.game.game,
-           gameLoading: state.game.gameLoading
-         };
+  return ({
+    game: state.game
+  });
 };
 
 const mapDispatchToProps = (dispatch) => {
