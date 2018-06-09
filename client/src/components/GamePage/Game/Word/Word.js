@@ -70,6 +70,7 @@ class Word extends Component {
     return (
       <div className="Word" >
         {lettersList}
+        {/* {this.props.word.definition} TODO */}
 
         {this.state.solved ?
           <button onClick={this.scramble} disabled>Scramble</button> :

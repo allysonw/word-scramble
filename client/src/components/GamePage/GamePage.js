@@ -29,7 +29,7 @@ class GamePage extends Component {
     this.props.updateSolvedWordCount();
 
     // check for a win
-    if (this.props.game.solvedWordCount === 2) {
+    if (this.props.game.solvedWordCount === 1) {
       this.props.updateScore(1500);
     }
   }
