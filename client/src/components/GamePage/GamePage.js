@@ -7,24 +7,36 @@ import { fetchNewGame, updateSolvedWordCount, updateScore } from  '../../actions
 import './GamePage.css';
 import wheel from '../../images/loading-wheel.png'
 
+// Main container component for the Play page
 class GamePage extends Component {
+
+  // Checks to see if a game is loading or has been loaded
   checkStateForGameContent = () => {
+
+    // If loading, returns the loading animation
     if (this.props.game.gameLoading === true) {
      return (
        <div>
          <img alt="loading" src={wheel} className="Loading-wheel" />
        </div>
      );
-   } else if ((this.props.game.id !== undefined) &&
+
+    // If a game has been loaded, returns the game
+    } else if ((this.props.game.id !== undefined) &&
               (this.props.game.gameLoading === false)) {
 
      return <Game game={this.props.game} words={this.props.game.words} onWordSolved={this.handleWordSolved}/>;
 
+   // Otherwise, returns nothing
    } else {
      return '';
     }
   }
 
+  // Called from the Word component when a word is solved
+  // Once all words belonging to a game have been solved
+  // dispatches an action to update the game score & mark
+  // game as completed
   handleWordSolved = () => {
     this.props.updateSolvedWordCount();
 
@@ -35,6 +47,7 @@ class GamePage extends Component {
   }
 
   render() {
+    // get content for the main Game area
     const gameContent = this.checkStateForGameContent();
 
     return (
@@ -47,6 +60,7 @@ class GamePage extends Component {
   }
 }
 
+// Connection to Redux State
 const mapStateToProps = (state) => {
   return ({
     game: state.game

@@ -3,6 +3,7 @@ import Word from './Word/Word';
 
 class Game extends Component {
 
+  // Set up list of words to show to the user
   renderWords = () => {
     return this.props.words.map(word => {
       return (
@@ -14,6 +15,7 @@ class Game extends Component {
   render() {
     let gameContent;
 
+    // If the game is over, don't render the words
     if (!this.props.game.complete) {
       gameContent = this.renderWords();
     } else {
