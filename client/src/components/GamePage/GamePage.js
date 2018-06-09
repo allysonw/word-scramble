@@ -3,7 +3,7 @@ import Game from './Game/Game';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchNewGame } from  '../../actions/gameActions.js';
+import { fetchNewGame, updateSolvedWordCount, updateScore } from  '../../actions/gameActions.js';
 import './GamePage.css';
 import wheel from '../../images/loading-wheel.png'
 
@@ -12,16 +12,25 @@ class GamePage extends Component {
     if (this.props.game.gameLoading === true) {
      return (
        <div>
-         <img src={wheel} className="Loading-wheel" />
+         <img alt="loading" src={wheel} className="Loading-wheel" />
        </div>
      );
-
    } else if ((this.props.game.id !== undefined) &&
               (this.props.game.gameLoading === false)) {
-     return <Game game={this.props.game} words={this.props.game.words}/>;
 
-    } else {
+     return <Game game={this.props.game} words={this.props.game.words} onWordSolved={this.handleWordSolved}/>;
+
+   } else {
      return '';
+    }
+  }
+
+  handleWordSolved = () => {
+    this.props.updateSolvedWordCount();
+
+    // check for a win
+    if (this.props.game.solvedWordCount === 2) {
+      this.props.updateScore(1500);
     }
   }
 
@@ -46,7 +55,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchNewGame: fetchNewGame
+    fetchNewGame: fetchNewGame,
+    updateSolvedWordCount: updateSolvedWordCount,
+    updateScore: updateScore
   }, dispatch);
 };
 

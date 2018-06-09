@@ -6,3 +6,16 @@ export function fetchNewGame() {
     .then(game => dispatch({ type: 'ADD_GAME', payload: game }));
   };
 }
+
+export function updateSolvedWordCount() {
+  return {
+    type: 'UPDATE_SOLVED_WORD_COUNT'
+  }
+}
+
+export function updateScore(value) {
+  return {
+    type: 'UPDATE_SCORE',
+    payload: value
+  }
+}

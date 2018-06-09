@@ -6,19 +6,23 @@ class Game extends Component {
   renderWords = () => {
     return this.props.words.map(word => {
       return (
-          <Word key={word.id} word={word} />
+          <Word key={word.id} word={word} onWordSolved={this.props.onWordSolved}/>
       );
     });
   }
 
   render() {
-    const wordsList = this.renderWords();
+    let gameContent;
+
+    if (!this.props.game.complete) {
+      gameContent = this.renderWords();
+    } else {
+      gameContent = 'You Won!'
+    }
 
     return (
       <div className="Game" >
-        {/* Game ID: {this.props.game.id} */}
-
-        {wordsList}
+        {gameContent}
       </div>
     );
   }

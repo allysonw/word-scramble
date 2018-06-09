@@ -5,7 +5,7 @@ class WordsApiService
     words_array = [Word.find(1), Word.find(2)]
     words_array = [];
 
-    while words_array.length < 1 do
+    while words_array.length < 2 do
       begin
         @resp = Faraday.get 'https://wordsapiv1.p.mashape.com/words?hasDetails=frequency&lettersMin=6&lettersMax=6&random=true' do |req|
           req.headers['X-Mashape-Key'] = ENV['MASHAPE_KEY']
