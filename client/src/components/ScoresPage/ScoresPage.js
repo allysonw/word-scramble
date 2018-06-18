@@ -1,31 +1,20 @@
 import React, { Component } from 'react';
 import Score from './Score/Score';
 
-class ScoresPage extends Component {
-  constructor(props) {
-    super(props);
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-    this.state = {
-      scores: []
-    }
-  }
+import { fetchHighScores } from  '../../actions/scoresActions.js';
+
+// Main container component for the Scores page
+class ScoresPage extends Component {
 
   componentDidMount = () => {
     this.fetchScores();
   }
 
-  fetchScores = () => {
-    fetch('/api/v1/scores')
-    .then(res => res.json())
-    .then(scores => {
-      this.setState({
-        scores: scores
-      });
-    });
-  }
-
   renderHighScores = () => {
-    return this.state.scores.map(score => {
+    return this.props.scores.map(score => {
       return <Score key={score.id} score={score} />
     });
   }
@@ -41,4 +30,17 @@ class ScoresPage extends Component {
   }
 }
 
-export default ScoresPage;
+// Connection to Redux State
+const mapStateToProps = (state) => {
+  return ({
+    scores: state.scores
+  });
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    fetchHighScores: fetchHighScores
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScoresPage);

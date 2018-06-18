@@ -36,7 +36,7 @@ export default function gameReducer(state = { loading: false }, action) {
   }
 }
 
-// State looks like this:
+// "Game" slice of State looks like this:
 // {
 //   game: {
 //     loading: false,
