@@ -30,24 +30,26 @@ export function updateSolvedWordCount() {
 
 // Post updates to Game to Rails API
 // Dispatched when a user wins
-export function saveGame(id, score) {
+export function saveGame(id, scoreValue) {
   const patchUrl = `/api/v1/games/${id}`
 
   return (dispatch, getState) => {
     dispatch( {
       type: 'UPDATE_SCORE',
-      payload: score
+      payload: scoreValue
     });
 
     // get the new state that has the updated score
-    const game = getState().game
+    const updatedScore = getState().game.score
+    console.log("updated score is", updatedScore)
 
+    // send new score object to Rails API to persist to DB
     return fetch(patchUrl, {
         method: 'PATCH',
         headers: {
           'content-type': 'application/json'
         },
-        body: JSON.stringify(game)
+        body: JSON.stringify({score: updatedScore})
       })
     .then(res => res.json())
     .then(game => dispatch({ type: 'GAME_SAVED'}));

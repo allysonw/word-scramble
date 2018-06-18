@@ -23,7 +23,7 @@ class Api::V1::GamesController < ApplicationController
     # Receive newly completed Game from the client with
     # updated Score information and save both objects to the DB
     puts('*******IN UPDATE******')
-    game = Game.find(1);
+    game = Game.find(1)
     render json: game, status: 200
   end
 
