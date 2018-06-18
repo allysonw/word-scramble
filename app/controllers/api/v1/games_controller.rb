@@ -30,14 +30,14 @@ class Api::V1::GamesController < ApplicationController
     game.update(complete: true)
 
     score = Score.find(params[:score][:id])
-    score.update(value: params[:score][:value], player: "allyson")
+    score.update(score_params)
 
     render json: game, status: 200
   end
 
   private
-    def game_params
-      params.require(:id)
+    def score_params
+      params.require(:score).permit(:id, :player, :value, :created_at)
     end
 
 end
