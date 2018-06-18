@@ -17,7 +17,7 @@ export default function gameReducer(state = { loading: false }, action) {
 
     // when a word is solved, add 1 to the solved word count
     case "UPDATE_SOLVED_WORD_COUNT":
-      return {...state, solvedWordCount: ++state.solvedWordCount}
+      return {...state, solvedWordCount: ++state.solvedWordCount};
 
     // score is updated when a game is completed
     case "UPDATE_SCORE":
@@ -32,6 +32,7 @@ export default function gameReducer(state = { loading: false }, action) {
       return state;
 
     case "GAME_SAVED":
+      // clear state for next game after game persisted to DB
       return state;
 
     case "MARK_GAME_COMPLETE":

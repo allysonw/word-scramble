@@ -20,10 +20,10 @@ class PlayerInput extends Component {
     e.preventDefault();
     this.props.saveGame(this.state.value);
   }
-
   render() {
     return (
       <div>
+        <p>You Won! Please enter your name. </p>
         <form onSubmit={this.handleSubmit}>
           <label>Name: </label>
           <input type="text" value={this.state.value} onChange={this.handleInput} />
