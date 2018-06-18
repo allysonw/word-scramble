@@ -10,17 +10,25 @@ class PlayerInput extends Component {
     };
   }
 
-  handleInput = e => {
-
+  handleInput = (e) => {
+    this.setState({
+      value: e.target.value,
+    });
   }
 
-  // Returns true if user input matches "letters" prop (the solution)
-  
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.saveGame(this.state.value);
+  }
+
   render() {
     return (
       <div>
-        <label>Name: </label>
-        <input type="text" value={this.state.value} onChange={this.handleInput} />
+        <form onSubmit={this.handleSubmit}>
+          <label>Name: </label>
+          <input type="text" value={this.state.value} onChange={this.handleInput} />
+          <button type="submit">Save</button>
+        </form>
       </div>
     );
   }

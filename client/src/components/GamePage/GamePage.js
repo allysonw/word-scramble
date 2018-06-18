@@ -4,7 +4,7 @@ import LoadingWheel from '../LoadingWheel/LoadingWheel';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchNewGame, updateSolvedWordCount, saveGame } from  '../../actions/gameActions.js';
+import { fetchNewGame, updateSolvedWordCount, markGameComplete, saveGame } from  '../../actions/gameActions.js';
 import './GamePage.css';
 
 // Main container component for the Play page
@@ -21,7 +21,7 @@ class GamePage extends Component {
     } else if ((this.props.game.id !== undefined) &&
               (this.props.game.loading === false)) {
 
-     return <Game game={this.props.game} words={this.props.game.words} onWordSolved={this.handleWordSolved}/>;
+     return <Game game={this.props.game} words={this.props.game.words} onWordSolved={this.handleWordSolved} saveGame={this.savePlayerInputAndGame}/>;
 
    // Otherwise, returns nothing
    } else {
@@ -31,18 +31,19 @@ class GamePage extends Component {
 
   // Called from the Word component when a word is solved
   // Once all words belonging to a game have been solved
-  // dispatches an action to update the game score & mark
-  // game as completed
+  // ...
   handleWordSolved = () => {
     this.props.updateSolvedWordCount();
-    //this.props.updateScore(this.calculateScore());
 
-    console.log('game in handlewordsolved before if: ', this.props.game)
     // check for a win
     if (this.props.game.solvedWordCount === 1) {
-      this.props.saveGame(this.props.game.id, this.calculateScore());
-      console.log('game in handlewordsolved: ', this.props.game)
+      this.props.markGameComplete(this.props.game.id);
     }
+  }
+
+  savePlayerInputAndGame = (playerName) => {
+    console.log(playerName);
+    this.props.saveGame(this.props.game.id, this.calculateScore(), playerName);
   }
 
   // sums the score of all the words in the game
@@ -75,7 +76,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchNewGame: fetchNewGame,
     updateSolvedWordCount: updateSolvedWordCount,
-    saveGame: saveGame
+    saveGame: saveGame,
+    markGameComplete: markGameComplete
   }, dispatch);
 };
 

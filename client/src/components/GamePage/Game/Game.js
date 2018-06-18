@@ -21,7 +21,7 @@ class Game extends Component {
     if (!this.props.game.complete) {
       gameContent = this.renderWords();
     } else {
-      gameContent = <PlayerInput />
+      gameContent = <PlayerInput saveGame={this.props.saveGame}/>
     }
 
     return (

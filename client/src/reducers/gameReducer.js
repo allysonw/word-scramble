@@ -22,14 +22,20 @@ export default function gameReducer(state = { loading: false }, action) {
     // score is updated when a game is completed
     case "UPDATE_SCORE":
       return {...state,
-              score: {...state.score, value: action.payload },
-              complete: true};
+              score: {...state.score,
+                      value: action.payload.scoreValue,
+                      player: action.payload.playerName
+                    }
+              };
 
     case "SAVING_GAME":
       return state;
 
     case "GAME_SAVED":
       return state;
+
+    case "MARK_GAME_COMPLETE":
+      return {...state, complete: true};
 
     default:
       return state;

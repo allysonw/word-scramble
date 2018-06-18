@@ -10,7 +10,7 @@ class WordInput extends Component {
     };
   }
 
-  handleInput = e => {
+  handleInput = (e) => {
     // Check whether user has entered the solution with each
     // character they input
     if (this.validateWord(e.target.value)) {
