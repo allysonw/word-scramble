@@ -6,9 +6,9 @@ class WordsApiService
     words_array = [];
 
     # Loop until we get X suitable words
-    while words_array.length < 1 do
+    while words_array.length < 2 do
       begin
-        @resp = Faraday.get 'https://wordsapiv1.p.mashape.com/words?hasDetails=frequency&lettersMin=6&lettersMax=6&random=true' do |req|
+        @resp = Faraday.get 'https://wordsapiv1.p.mashape.com/words?hasDetails=frequency&lettersMin=4&lettersMax=4&random=true' do |req|
           req.headers['X-Mashape-Key'] = ENV['MASHAPE_KEY']
           req.headers['Accept'] = 'application/json'
         end
@@ -21,20 +21,23 @@ class WordsApiService
 
       # Parse the returned JSON
       word = body_hash['word']
-      #definition = body_hash['results'][0]['definition']
-      frequency = body_hash['frequency']
 
-      # Only keep words that have a frequency rating that is sufficiently
-      # high (common words make the game easier and more fun)
-      # TODO: figure out a faster way to do this with a frequency above 2.5
-      if frequency != nil && frequency > 3
+      if body_hash['results'].present? && body_hash['results'][0]['definition'].present?
+        definition = body_hash['results'][0]['definition']
+        frequency = body_hash['frequency']
 
-        # Difficulty is the inverse of frequency that words appear in English
-        difficulty = (1/frequency)*100.floor
+        # Only keep words that have a definition & a frequency rating that
+        # is sufficiently high (common words make the game easier and more fun)
+        # TODO: figure out a faster way to do this with a frequency above 2.5
+        if frequency != nil && frequency > 2.2 && definition.present?
 
-        new_word = Word.create(letters: word, difficulty: difficulty, definition: '')
+          # Difficulty is the inverse of frequency that words appear in English
+          difficulty = (1/2**frequency)*100.floor
 
-        words_array.push(new_word);
+          new_word = Word.create(letters: word, difficulty: difficulty, definition: definition)
+
+          words_array.push(new_word);
+        end
       end
     end
 
