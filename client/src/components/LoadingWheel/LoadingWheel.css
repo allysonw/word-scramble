@@ -1,0 +1,10 @@
+.Loading-wheel {
+  animation: Loading-wheel-spin infinite 1s linear;
+  height: 50px;
+  width: 50px;
+}
+
+@keyframes Loading-wheel-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

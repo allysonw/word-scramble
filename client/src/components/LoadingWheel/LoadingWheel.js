@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './LoadingWheel.css';
 import wheel from '../../images/loading-wheel.png'
 
 const LoadingWheel = (props) =>

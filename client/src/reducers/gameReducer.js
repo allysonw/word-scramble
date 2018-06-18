@@ -19,13 +19,12 @@ export default function gameReducer(state = { loading: false }, action) {
     case "UPDATE_SOLVED_WORD_COUNT":
       return {...state, solvedWordCount: ++state.solvedWordCount};
 
-    // score is updated when a game is completed
-    case "UPDATE_SCORE":
+    // player name is updated after player inputs their name
+    case "UPDATE_PLAYER_NAME":
       return {...state,
               score: {...state.score,
-                      value: action.payload.scoreValue,
-                      player: action.payload.playerName
-                    }
+                       player: action.payload.playerName
+                     }
               };
 
     case "SAVING_GAME":
@@ -35,8 +34,15 @@ export default function gameReducer(state = { loading: false }, action) {
       // clear state for next game after game persisted to DB
       return {};
 
-    case "MARK_GAME_COMPLETE":
-      return {...state, complete: true};
+    // as soon as game is won, mark it complete and update the
+    // state with the score so we can display it to the user
+    case "MARK_GAME_COMPLETE_AND_UPDATE_SCORE":
+      return {...state,
+              complete: true,
+              score: {...state.score,
+                       value: action.payload.scoreValue
+                     }
+             };
 
     default:
       return state;

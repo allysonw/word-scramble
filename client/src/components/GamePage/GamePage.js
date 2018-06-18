@@ -21,7 +21,7 @@ class GamePage extends Component {
     } else if ((this.props.game.id !== undefined) &&
               (this.props.game.loading === false)) {
 
-     return <Game game={this.props.game} words={this.props.game.words} onWordSolved={this.handleWordSolved} saveGame={this.savePlayerInputAndGame}/>;
+     return <Game game={this.props.game} words={this.props.game.words} onWordSolved={this.handleWordSolved} saveGame={this.savePlayerInputAndGame} calculateScore={this.props.calculateScore}/>;
 
    // Otherwise, returns nothing
    } else {
@@ -36,13 +36,15 @@ class GamePage extends Component {
     this.props.updateSolvedWordCount();
 
     // check for a win
-    if (this.props.game.solvedWordCount === 1) {
-      this.props.markGameComplete(this.props.game.id);
+    if (this.props.game.solvedWordCount ===
+        this.props.game.words.length) {
+
+      this.props.markGameComplete(this.calculateScore());
     }
   }
 
   savePlayerInputAndGame = (playerName) => {
-    this.props.saveGame(this.props.game.id, this.calculateScore(), playerName, this.props.history);
+    this.props.saveGame(this.props.game.id, playerName, this.props.history);
   }
 
   // sums the score of all the words in the game

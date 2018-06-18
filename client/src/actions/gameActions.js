@@ -19,7 +19,7 @@ export function updateSolvedWordCount() {
 
 // Post updates to Game to Rails API
 // Dispatched when a user wins
-export function saveGame(id, scoreValue, playerName, history) {
+export function saveGame(id, playerName, history) {
   const patchUrl = `/api/v1/games/${id}`
   // TODO break out into 2 patch requests, one to game API and one to scores API
   // TODO in rails controller, move Score logic out of Game controller
@@ -27,9 +27,8 @@ export function saveGame(id, scoreValue, playerName, history) {
 
   return (dispatch, getState) => {
     dispatch( {
-      type: 'UPDATE_SCORE',
+      type: 'UPDATE_PLAYER_NAME',
       payload: {
-        scoreValue: scoreValue,
         playerName: playerName
       }
     });
@@ -53,8 +52,9 @@ export function saveGame(id, scoreValue, playerName, history) {
   }
 }
 
-export function markGameComplete() {
+export function markGameComplete(scoreValue) {
   return {
-    type: 'MARK_GAME_COMPLETE'
+    type: 'MARK_GAME_COMPLETE_AND_UPDATE_SCORE',
+    payload: { scoreValue: scoreValue }
   }
 }
