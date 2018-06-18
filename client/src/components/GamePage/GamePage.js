@@ -14,7 +14,7 @@ class GamePage extends Component {
   checkStateForGameContent = () => {
 
     // If loading, returns the loading animation
-    if (this.props.game.gameLoading === true) {
+    if (this.props.game.loading === true) {
      return (
        <div>
          <img alt="loading" src={wheel} className="Loading-wheel" />
@@ -23,7 +23,7 @@ class GamePage extends Component {
 
     // If a game has been loaded, returns the game
     } else if ((this.props.game.id !== undefined) &&
-              (this.props.game.gameLoading === false)) {
+              (this.props.game.loading === false)) {
 
      return <Game game={this.props.game} words={this.props.game.words} onWordSolved={this.handleWordSolved}/>;
 
