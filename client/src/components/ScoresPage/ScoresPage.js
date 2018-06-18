@@ -7,9 +7,6 @@ import { bindActionCreators } from 'redux';
 
 import { fetchHighScores } from  '../../actions/scoresActions.js';
 
-import wheel from '../../images/loading-wheel.png'
-
-
 // Main container component for the Scores page
 class ScoresPage extends Component {
 
@@ -27,9 +24,21 @@ class ScoresPage extends Component {
   }
 
   renderHighScores = () => {
-    return this.props.scores.scores.map(score => {
-      return <Score key={score.id} score={score} />
-    });
+    const scoresTableRows = this.props.scores.scores.map(score => <Score key={score.id} score={score} />);
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {scoresTableRows}
+        </tbody>
+      </table>
+    );
   }
 
   render() {
@@ -37,12 +46,7 @@ class ScoresPage extends Component {
 
     return (
       <div className="ScoresPage" >
-        <table>
-          <th>Player</th>
-          <th>Score</th>
-          {scoresContent}
-        </table>
-
+        {scoresContent}
       </div>
     );
   }
