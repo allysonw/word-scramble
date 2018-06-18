@@ -1,11 +1,16 @@
 import React from 'react';
 
 const Score = (props) => {
+  const date = new Date(props.score.created_at);
+  let dateString = (date.getMonth() + 1).toString() + "/";
+  dateString += date.getDate().toString() + "/";
+  dateString += date.getFullYear().toString();
+
   return (
     <tr className="Score" >
       <td>{props.score.player}</td>
       <td>{props.score.value}</td>
-      <td>{props.score.date}</td>
+      <td>{dateString}</td>
     </tr>
   );
 }

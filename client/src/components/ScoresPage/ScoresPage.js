@@ -32,6 +32,7 @@ class ScoresPage extends Component {
           <tr>
             <th>Player</th>
             <th>Score</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>

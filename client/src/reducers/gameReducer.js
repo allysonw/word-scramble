@@ -33,7 +33,7 @@ export default function gameReducer(state = { loading: false }, action) {
 
     case "GAME_SAVED":
       // clear state for next game after game persisted to DB
-      return state;
+      return {};
 
     case "MARK_GAME_COMPLETE":
       return {...state, complete: true};
