@@ -42,8 +42,13 @@ class GamePage extends Component {
 
     // check for a win
     if (this.props.game.solvedWordCount === 1) {
-      this.props.updateScore(1500);
+      this.props.updateScore(this.calculateScore());
     }
+  }
+
+  // sums the score of all the words in the game
+  calculateScore = () => {
+    return this.props.game.words.map(word => word.difficulty).reduce(((totalScore, currentScore) => totalScore + currentScore), 0);
   }
 
   render() {
