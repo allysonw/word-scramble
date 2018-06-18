@@ -1,10 +1,8 @@
 class Api::V1::ScoresController < ApplicationController
   def index
-    # Return all scores to the client
-    scores = Score.all.sort do |a,b|
-      a.value > b.value ? -1 : 1
-    end
-    
+    # Return top 10 scores to the client
+    scores = Score.top_x_scores(15)
+
     render json: scores
   end
 end
