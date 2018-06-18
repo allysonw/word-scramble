@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Word from './Word/Word';
+import PlayerInput from './PlayerInput/PlayerInput'
 
 // Game component holds the words that make up the game
 class Game extends Component {
@@ -20,8 +21,7 @@ class Game extends Component {
     if (!this.props.game.complete) {
       gameContent = this.renderWords();
     } else {
-      console.log('game in Game component', this.props.game)
-      gameContent = `Win. Score: ${this.props.game.score.value}`
+      gameContent = <PlayerInput />
     }
 
     return (

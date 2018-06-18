@@ -32,6 +32,9 @@ export function updateSolvedWordCount() {
 // Dispatched when a user wins
 export function saveGame(id, scoreValue) {
   const patchUrl = `/api/v1/games/${id}`
+  // TODO break out into 2 patch requests, one to game API and one to scores API
+  // TODO in rails controller, move Score logic out of Game controller
+  // TODO add some payload to the game request to indicate it's completing the game
 
   return (dispatch, getState) => {
     dispatch( {
@@ -41,7 +44,6 @@ export function saveGame(id, scoreValue) {
 
     // get the new state that has the updated score
     const updatedScore = getState().game.score
-    console.log("updated score is", updatedScore)
 
     // send new score object to Rails API to persist to DB
     return fetch(patchUrl, {
