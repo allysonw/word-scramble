@@ -37,7 +37,12 @@ class ScoresPage extends Component {
 
     return (
       <div className="ScoresPage" >
-        {scoresContent}
+        <table>
+          <th>Player</th>
+          <th>Score</th>
+          {scoresContent}
+        </table>
+
       </div>
     );
   }
