@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Letter from './Letter/Letter'
-import WordInput from './WordInput/WordInput'
+import Letter from './Letter/Letter';
+import Hint from './Hint/Hint';
+import WordInput from './WordInput/WordInput';
 
 // Word component displays the letters making up the word
 class Word extends Component {
@@ -84,7 +85,7 @@ class Word extends Component {
 
       <div className="Word" >
         {lettersList}
-        {/* {this.props.word.definition} TODO */}
+        <Hint definition={this.props.word.definition}/>
 
         {/*  If solved, disable the scramble button */}
         {this.state.solved ?
