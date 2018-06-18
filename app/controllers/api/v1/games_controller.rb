@@ -22,8 +22,16 @@ class Api::V1::GamesController < ApplicationController
   def update
     # Receive newly completed Game from the client with
     # updated Score information and save both objects to the DB
+
+    # Parameters: {"score"=>{"id"=>294, "player"=>"", "value"=>5, "created_at"=>"2018-06-18T18:49:49.824Z"}, "id"=>"340", "game"=>{}}
+
     puts('*******IN UPDATE******')
-    game = Game.find(1)
+    game = Game.find(params[:id])
+    game.update(complete: true)
+
+    score = Score.find(params[:score][:id])
+    score.update(value: params[:score][:value], player: "allyson")
+
     render json: game, status: 200
   end
 
