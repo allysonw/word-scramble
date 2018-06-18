@@ -17,17 +17,6 @@ export function updateSolvedWordCount() {
   }
 }
 
-// // Tell reducer to mark game as complete & update the state's score
-// // Dispatched when the game is won
-// export function updateScore(value) {
-//   console.log('score in update score: ', value)
-//
-//   return {
-//     type: 'UPDATE_SCORE',
-//     payload: value
-//   }
-// }
-
 // Post updates to Game to Rails API
 // Dispatched when a user wins
 export function saveGame(id, scoreValue) {

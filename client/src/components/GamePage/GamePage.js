@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import Game from './Game/Game';
+import LoadingWheel from '../LoadingWheel/LoadingWheel';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchNewGame, updateSolvedWordCount, saveGame } from  '../../actions/gameActions.js';
 import './GamePage.css';
-import wheel from '../../images/loading-wheel.png'
 
 // Main container component for the Play page
 class GamePage extends Component {
 
   // Checks to see if a game is loading or has been loaded
   checkStateForGameContent = () => {
-    console.log('checking state for game content. game is: ', this.props.game)
+
     // If loading, returns the loading animation
-    if (this.props.game.loading === true) {
-     return (
-       <div>
-         <img alt="loading" src={wheel} className="Loading-wheel" />
-       </div>
-     );
+    if (this.props.game.loading) {
+     return <LoadingWheel />;
 
     // If a game has been loaded, returns the game
     } else if ((this.props.game.id !== undefined) &&
