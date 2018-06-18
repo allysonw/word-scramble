@@ -17,22 +17,31 @@ export function updateSolvedWordCount() {
   }
 }
 
-// Tell reducer to mark game as complete & update the state's score
-// Dispatched when the game is won
-export function updateScore(value) {
-  return {
-    type: 'UPDATE_SCORE',
-    payload: value
-  }
-}
+// // Tell reducer to mark game as complete & update the state's score
+// // Dispatched when the game is won
+// export function updateScore(value) {
+//   console.log('score in update score: ', value)
+//
+//   return {
+//     type: 'UPDATE_SCORE',
+//     payload: value
+//   }
+// }
 
 // Post updates to Game to Rails API
 // Dispatched when a user wins
-export function saveGame(game) {
-  const patchUrl = `/api/v1/games/${game.id}`
+export function saveGame(id, score) {
+  const patchUrl = `/api/v1/games/${id}`
 
-  return (dispatch) => {
-    dispatch({ type: 'SAVING_GAME'});
+  return (dispatch, getState) => {
+    dispatch( {
+      type: 'UPDATE_SCORE',
+      payload: score
+    });
+
+    // get the new state that has the updated score
+    const game = getState().game
+
     return fetch(patchUrl, {
         method: 'PATCH',
         headers: {
@@ -41,6 +50,6 @@ export function saveGame(game) {
         body: JSON.stringify(game)
       })
     .then(res => res.json())
-    .then(game => dispatch({ type: 'GAME_SAVED', payload: game }));
+    .then(game => dispatch({ type: 'GAME_SAVED'}));
   };
 }

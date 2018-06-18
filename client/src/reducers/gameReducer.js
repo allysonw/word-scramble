@@ -26,11 +26,10 @@ export default function gameReducer(state = { loading: false }, action) {
               complete: true};
 
     case "SAVING_GAME":
-      return {...state, loading: true };
+      return state;
 
     case "GAME_SAVED":
-      return {...state,
-        loading: false}
+      return state;
 
     default:
       return state;

@@ -20,7 +20,8 @@ class Game extends Component {
     if (!this.props.game.complete) {
       gameContent = this.renderWords();
     } else {
-      gameContent = 'You Won!'
+      console.log('game in Game component', this.props.game)
+      gameContent = `Win. Score: ${this.props.game.score.value}`
     }
 
     return (

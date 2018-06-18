@@ -3,7 +3,7 @@ import Game from './Game/Game';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchNewGame, updateSolvedWordCount, updateScore, saveGame } from  '../../actions/gameActions.js';
+import { fetchNewGame, updateSolvedWordCount, saveGame } from  '../../actions/gameActions.js';
 import './GamePage.css';
 import wheel from '../../images/loading-wheel.png'
 
@@ -12,7 +12,7 @@ class GamePage extends Component {
 
   // Checks to see if a game is loading or has been loaded
   checkStateForGameContent = () => {
-
+    console.log('checking state for game content. game is: ', this.props.game)
     // If loading, returns the loading animation
     if (this.props.game.loading === true) {
      return (
@@ -39,11 +39,13 @@ class GamePage extends Component {
   // game as completed
   handleWordSolved = () => {
     this.props.updateSolvedWordCount();
+    //this.props.updateScore(this.calculateScore());
 
+    console.log('game in handlewordsolved before if: ', this.props.game)
     // check for a win
     if (this.props.game.solvedWordCount === 1) {
-      this.props.updateScore(this.calculateScore());
-      this.props.saveGame(this.props.game);
+      this.props.saveGame(this.props.game.id, this.calculateScore());
+      console.log('game in handlewordsolved: ', this.props.game)
     }
   }
 
@@ -77,7 +79,6 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchNewGame: fetchNewGame,
     updateSolvedWordCount: updateSolvedWordCount,
-    updateScore: updateScore,
     saveGame: saveGame
   }, dispatch);
 };
