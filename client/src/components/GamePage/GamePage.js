@@ -3,7 +3,7 @@ import Game from './Game/Game';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchNewGame, updateSolvedWordCount, updateScore } from  '../../actions/gameActions.js';
+import { fetchNewGame, updateSolvedWordCount, updateScore, saveGame } from  '../../actions/gameActions.js';
 import './GamePage.css';
 import wheel from '../../images/loading-wheel.png'
 
@@ -43,6 +43,7 @@ class GamePage extends Component {
     // check for a win
     if (this.props.game.solvedWordCount === 1) {
       this.props.updateScore(this.calculateScore());
+      this.props.saveGame(this.props.game);
     }
   }
 
@@ -76,7 +77,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchNewGame: fetchNewGame,
     updateSolvedWordCount: updateSolvedWordCount,
-    updateScore: updateScore
+    updateScore: updateScore,
+    saveGame: saveGame
   }, dispatch);
 };
 

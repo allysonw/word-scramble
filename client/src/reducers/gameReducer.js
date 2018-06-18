@@ -25,6 +25,13 @@ export default function gameReducer(state = { loading: false }, action) {
               score: {...state.score, value: action.payload },
               complete: true};
 
+    case "SAVING_GAME":
+      return {...state, loading: true };
+
+    case "GAME_SAVED":
+      return {...state,
+        loading: false}
+
     default:
       return state;
   }

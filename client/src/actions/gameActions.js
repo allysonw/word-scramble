@@ -25,3 +25,22 @@ export function updateScore(value) {
     payload: value
   }
 }
+
+// Post updates to Game to Rails API
+// Dispatched when a user wins
+export function saveGame(game) {
+  const patchUrl = `/api/v1/games/${game.id}`
+
+  return (dispatch) => {
+    dispatch({ type: 'SAVING_GAME'});
+    return fetch(patchUrl, {
+        method: 'PATCH',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(game)
+      })
+    .then(res => res.json())
+    .then(game => dispatch({ type: 'GAME_SAVED', payload: game }));
+  };
+}
