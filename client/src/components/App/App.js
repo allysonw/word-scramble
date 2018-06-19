@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 import NavBar from '../NavBar/NavBar';
+//import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
 import ScoresPage from '../ScoresPage/ScoresPage'
 import GamePage from '../GamePage/GamePage'
 
@@ -12,7 +14,23 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar />
+        <NavBar />
+          {/* <Navbar>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <a href="/">Word Scramble</a>
+              </Navbar.Brand>
+            </Navbar.Header>
+            <Nav>
+              <NavItem eventKey={1} href="/play">
+                Play
+              </NavItem>
+              <NavItem eventKey={2} href="/high-scores">
+                High Scores
+              </NavItem>
+            </Nav>
+          </Navbar> */}
+
           <Route exact path="/" render={() => <div>Welcome to word scramble!</div>} />
           <Route path="/high-scores" component={ScoresPage}/>
           <Route path="/play" component={GamePage}/>
