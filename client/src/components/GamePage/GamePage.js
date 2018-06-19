@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import { fetchNewGame, updateSolvedWordCount, markGameComplete, saveGame, markWordSolved } from  '../../actions/gameActions.js';
 
 import './GamePage.css';
-import { Button } from 'react-bootstrap';
 
 // Main container component for the Play page
 class GamePage extends Component {
@@ -61,7 +60,7 @@ class GamePage extends Component {
 
     return (
       <div className="GamePage" >
-        <Button onClick={this.props.fetchNewGame}>New Game</Button>
+        <button className="play-button" onClick={this.props.fetchNewGame}>New Game</button>
 
         {gameContent}
       </div>

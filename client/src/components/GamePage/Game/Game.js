@@ -3,6 +3,7 @@ import Word from './Word/Word';
 import ScoreCard from './ScoreCard/ScoreCard'
 import PlayerInput from './PlayerInput/PlayerInput'
 
+import './Game.css';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 // Game component holds the words that make up the game
@@ -18,16 +19,18 @@ class Game extends Component {
   }
 
   render() {
-    let gameContent;
+    let gameContent = this.renderWords();
 
-    // If the game is over, don't render the words
-    if (!this.props.game.complete) {
-      gameContent = this.renderWords();
-    } else {
+    // If the game is over, show the score card and player input
+    // as an overlay to the completed game
+    if (this.props.game.complete) {
       gameContent = (
         <div>
-          <ScoreCard score={this.props.game.score.value}/>
-          <PlayerInput saveGame={this.props.saveGame}/>
+          {this.renderWords()}
+          <div className="game-win-box">
+            <ScoreCard score={this.props.game.score.value}/>
+            <PlayerInput saveGame={this.props.saveGame}/>
+          </div>
         </div>
       )
     }

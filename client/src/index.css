@@ -2,4 +2,20 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Droid Serif';
+  background-color: blue;
+}
+
+.play-button {
+  background-color: rgb(235,89,82);
+  border-color: rgb(235,89,82);
+  color: white;
+  font-size: 2em;
+  border-radius: 13px;
+  padding: 3px 15px;
+}
+
+.play-button:hover {
+  background-color: rgb(213,44,35);
+  border-color: rgb(213,44,35);
+  color: white;
 }

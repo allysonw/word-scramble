@@ -5,15 +5,16 @@ import './App.css';
 import NavBar from '../NavBar/NavBar';
 //import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
-import ScoresPage from '../ScoresPage/ScoresPage'
-import GamePage from '../GamePage/GamePage'
+import HomePage from '../HomePage/HomePage';
+import ScoresPage from '../ScoresPage/ScoresPage';
+import GamePage from '../GamePage/GamePage';
 
 // Main component for the application
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="app container">
         <NavBar />
           {/* <Navbar>
             <Navbar.Header>
@@ -31,7 +32,7 @@ class App extends Component {
             </Nav>
           </Navbar> */}
 
-          <Route exact path="/" render={() => <div>Welcome to word scramble!</div>} />
+          <Route exact path="/" component={HomePage} />
           <Route path="/high-scores" component={ScoresPage}/>
           <Route path="/play" component={GamePage}/>
         </div>

@@ -2,8 +2,7 @@ import React from 'react';
 
 const ScoreCard = (props) => {
   return (
-    // Check props for what CSS to use
-    <div className="score-card">
+    <div>
       SCORE: {props.score}
     </div>
   );

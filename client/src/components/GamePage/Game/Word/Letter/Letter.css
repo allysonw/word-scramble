@@ -1,4 +1,4 @@
-.Letter-unsolved {
+.letter-unsolved {
   display: inline-block;
   margin: 10px;
   width: 1.5em;
@@ -12,7 +12,7 @@
   background-color: #3c64c9;
 }
 
-.Letter-solved {
+.letter-solved {
   display: inline-block;
   margin: 10px;
   width: 1.5em;
