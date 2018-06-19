@@ -82,7 +82,7 @@ class Word extends Component {
     let wordComponents; // scramble button and input box
 
     // If solved, disable the scramble button, don't show the
-    // input, and let user know.
+    // input or hint, and let user know.
     if (this.state.solved) {
         wordComponents = (
           <div>
@@ -99,6 +99,7 @@ class Word extends Component {
           {/* Give WordInput knowlegde of the word and a callback
               to use if the word is solved */}
           <WordInput word={this.props.word} onSolved={this.handleSolved}/>
+          <Hint definition={this.props.word.definition}/>
         </div>
       )
     }
@@ -106,7 +107,6 @@ class Word extends Component {
     return (
       <div className="Word" >
         {lettersList}
-        <Hint definition={this.props.word.definition}/>
         {wordComponents}
       </div>
     );
