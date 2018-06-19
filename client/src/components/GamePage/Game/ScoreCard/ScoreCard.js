@@ -2,8 +2,8 @@ import React from 'react';
 
 const ScoreCard = (props) => {
   return (
-    <div>
-      SCORE: {props.score}
+    <div className="score-card">
+      Score: {props.score}
     </div>
   );
 }

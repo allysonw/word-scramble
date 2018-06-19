@@ -1,3 +1,12 @@
 .game-win-box {
-  background: rgba(255,255,255,0.85);
+  margin-top: -300px;
+  padding: 20px;
+  background-color: white;
+  background: rgba(255,255,255, 0.98);
+  color: black;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px grey;
 }

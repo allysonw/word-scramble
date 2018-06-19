@@ -25,7 +25,6 @@ class PlayerInput extends Component {
       <div>
         <p>You Won! Please enter your name. </p>
         <form onSubmit={this.handleSubmit}>
-          <label>Name: </label>
           <input type="text" value={this.state.value} onChange={this.handleInput} />
           <button type="submit">Save</button>
         </form>

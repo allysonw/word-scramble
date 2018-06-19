@@ -27,9 +27,11 @@ class Game extends Component {
       gameContent = (
         <div>
           {this.renderWords()}
-          <div className="game-win-box">
-            <ScoreCard score={this.props.game.score.value}/>
-            <PlayerInput saveGame={this.props.saveGame}/>
+          <div>
+            <Col sm={4} smOffset={4} className="game-win-box">
+              <ScoreCard score={this.props.game.score.value}/>
+              <PlayerInput saveGame={this.props.saveGame}/>
+            </Col>
           </div>
         </div>
       )
