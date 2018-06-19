@@ -3,7 +3,11 @@ import Letter from './Letter/Letter';
 import Hint from './Hint/Hint';
 import WordInput from './WordInput/WordInput';
 
+import './Word.css';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
+
 // Word component displays the letters making up the word
+// As well as the hint, scramble button, and word input
 class Word extends Component {
   constructor(props) {
     super(props)
@@ -86,7 +90,7 @@ class Word extends Component {
     if (this.state.solved) {
         wordComponents = (
           <div>
-            <button onClick={this.scramble} disabled>Scramble</button>
+            <Button onClick={this.scramble} disabled>Scramble</Button>
 
             <p>Correct!</p>
           </div>
@@ -94,20 +98,29 @@ class Word extends Component {
     } else {
       wordComponents = (
         <div>
-          <button onClick={this.scramble}>Scramble</button>
-
           {/* Give WordInput knowlegde of the word and a callback
               to use if the word is solved */}
-          <WordInput word={this.props.word} onSolved={this.handleSolved}/>
-          <Hint definition={this.props.word.definition}/>
+
+
+            <WordInput word={this.props.word} onSolved={this.handleSolved}/>
+
+
+          <Col xs={2}>
+            <Button onClick={this.scramble}>Scramble</Button>
+          </Col>
+
+          <Col xs={2}>
+            <Hint definition={this.props.word.definition}/>
+          </Col>
+
         </div>
       )
     }
 
     return (
-      <div className="Word" >
-        {lettersList}
-        {wordComponents}
+      <div className="Word">
+          <Row> {lettersList} </Row>
+          <Row> {wordComponents} </Row>
       </div>
     );
   }

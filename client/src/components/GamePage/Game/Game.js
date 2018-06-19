@@ -3,6 +3,8 @@ import Word from './Word/Word';
 import ScoreCard from './ScoreCard/ScoreCard'
 import PlayerInput from './PlayerInput/PlayerInput'
 
+import { Grid, Row, Col } from 'react-bootstrap';
+
 // Game component holds the words that make up the game
 class Game extends Component {
 
@@ -31,9 +33,9 @@ class Game extends Component {
     }
 
     return (
-      <div className="Game" >
+      <Grid className="Game" >
         {gameContent}
-      </div>
+      </Grid>
     );
   }
 }

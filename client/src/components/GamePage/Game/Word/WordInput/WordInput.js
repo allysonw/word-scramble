@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Col, Button } from 'react-bootstrap';
+
 class WordInput extends Component {
   constructor(props) {
     super(props);
@@ -30,10 +32,10 @@ class WordInput extends Component {
 
   render() {
     return (
-      <div>
+      <Col xs={8}>
         <label>Solution: </label>
         <input type="text" value={this.state.value} onChange={this.handleInput} />
-      </div>
+      </Col>
     );
   }
 }

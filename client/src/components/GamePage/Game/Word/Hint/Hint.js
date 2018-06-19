@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import {Button } from 'react-bootstrap';
+
 class Hint extends Component {
   constructor(props) {
     super(props)
@@ -26,7 +28,7 @@ class Hint extends Component {
     return (
       // Check props for what CSS to use
       <div>
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <Button onClick={this.handleClick}>{buttonText}</Button>
         {hintContent}
       </div>
     );

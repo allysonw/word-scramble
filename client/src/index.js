@@ -11,6 +11,14 @@ import './bootstrap/css/bootstrap-theme.css';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
+import WebFont from 'webfontloader';
+
+WebFont.load({
+    google: {
+      families: ['Droid Sans', 'Droid Serif', 'Fredericka the Great', 'Eater']
+    }
+});
+
 const store = configureStore();
 
 ReactDOM.render(
