@@ -45,7 +45,7 @@ class GamePage extends Component {
   }
 
   savePlayerInputAndGame = (playerName) => {
-    this.props.saveGame(this.props.game.id, playerName, this.props.history);
+    this.props.saveGame(this.props.game.id, this.props.game.score.id, playerName, this.props.history);
   }
 
   // sums the score of all the words in the game

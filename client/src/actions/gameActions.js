@@ -17,6 +17,9 @@ export function updateSolvedWordCount() {
   };
 }
 
+// Tell reducer to set a flag on a word to mark
+// as solved
+// Dispatched when a Word component is solved
 export function markWordSolved(wordId) {
   return {
     type: 'MARK_WORD_SOLVED',
@@ -24,17 +27,15 @@ export function markWordSolved(wordId) {
   };
 }
 
-
-// Post updates to Game to Rails API
+// Post updates to the Rails API
 // Dispatched when a user wins
-export function saveGame(id, playerName, history) {
-  const patchUrl = `/api/v1/games/${id}`
-  // TODO break out into 2 patch requests, one to game API and one to scores API
-  // TODO in rails controller, move Score logic out of Game controller
-  // TODO add some payload to the game request to indicate it's completing the game
+export function saveGame(gameId, scoreId, playerName, history) {
+  const gamePatchUrl = `/api/v1/games/${gameId}`
+  const scorePatchUrl = `/api/v1/scores/${scoreId}`
 
+  // Use Thunk middleware to dispatch multiple actions in sequence
   return (dispatch, getState) => {
-    dispatch( {
+    dispatch({
       type: 'UPDATE_PLAYER_NAME',
       payload: {
         playerName: playerName
@@ -44,19 +45,31 @@ export function saveGame(id, playerName, history) {
     // get the new state that has the updated score
     const updatedScore = getState().game.score;
 
-    // send new score object to Rails API to persist to DB
-    return fetch(patchUrl, {
+    // first, send new score object to Rails API to persist to DB
+    fetch(scorePatchUrl, {
         method: 'PATCH',
         headers: {
           'content-type': 'application/json'
         },
         body: JSON.stringify({score: updatedScore})
       })
-    .then(res => res.json())
-    .then(game => {
-      history.push("/high-scores");
-      return dispatch({ type: 'GAME_SAVED'});
-    });
+      .then(res => {
+
+        // then, send request to Rails API to mark game as solved
+        fetch(gamePatchUrl, {
+            method: 'PATCH',
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify({solved: true})
+        })
+      })
+      .then(res => {
+        // finally, redirect user to high scores page after all requests
+        // are complete
+        history.push("/high-scores");
+        dispatch({ type: 'GAME_SAVED'});
+      });
   }
 }
 
