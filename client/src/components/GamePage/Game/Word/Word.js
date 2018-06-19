@@ -79,30 +79,35 @@ class Word extends Component {
 
   render() {
     const lettersList = this.renderLetters();
+    let wordComponents; // scramble button and input box
+
+    // If solved, disable the scramble button, don't show the
+    // input, and let user know.
+    if (this.state.solved) {
+        wordComponents = (
+          <div>
+            <button onClick={this.scramble} disabled>Scramble</button>
+
+            <p>Correct!</p>
+          </div>
+        )
+    } else {
+      wordComponents = (
+        <div>
+          <button onClick={this.scramble}>Scramble</button>
+
+          {/* Give WordInput knowlegde of the word and a callback
+              to use if the word is solved */}
+          <WordInput word={this.props.word} onSolved={this.handleSolved}/>
+        </div>
+      )
+    }
 
     return (
-      // TODO: refactor this method to make more DRY
-
       <div className="Word" >
         {lettersList}
         <Hint definition={this.props.word.definition}/>
-
-        {/*  If solved, disable the scramble button */}
-        {this.state.solved ?
-          <button onClick={this.scramble} disabled>Scramble</button> :
-          <button onClick={this.scramble}>Scramble</button>
-        }
-
-        {/* If solved, hide the input */}
-        {/* Give WordInput knowlegde of the word and a callback
-          to use if the word is solved */}
-        {this.state.solved ?
-          '' :
-          <WordInput word={this.props.word} onSolved={this.handleSolved}/>
-        }
-
-        {/* If solved, let the user know */}
-        <p>{this.state.solved ? "Correct!" : ''}</p>
+        {wordComponents}
       </div>
     );
   }

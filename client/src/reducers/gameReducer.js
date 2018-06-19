@@ -50,17 +50,24 @@ export default function gameReducer(state = { loading: false }, action) {
     case "MARK_WORD_SOLVED":
       let index = 0, i = 0;
       for (let word of state.words) {
+
+        // if the word is the one we are searching for, remember
+        // its index in the words array
         if (word.id === action.payload) {
           index = i;
         }
         i++;
       }
 
+      // get the words array from current state
       let updatedWords = state.words;
+
+      // get the word we need to update
       let currentWord = updatedWords[index];
+
+      // add a new key to the word we want to mark as solved
       updatedWords[index] = {...currentWord, solved: true};
 
-debugger
       return {...state, words: updatedWords};
 
     default:
