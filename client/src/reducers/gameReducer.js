@@ -31,7 +31,8 @@ export default function gameReducer(state = { loading: false }, action) {
       return state;
 
     case "GAME_SAVED":
-      // clear state for next game after game persisted to DB
+      // clear game slice of state for next game after
+      // the game is persisted to DB
       return {};
 
     // as soon as game is won, mark it complete and update the
@@ -43,6 +44,24 @@ export default function gameReducer(state = { loading: false }, action) {
                        value: action.payload.scoreValue
                      }
              };
+
+    // finds the word based on the id in the action payload
+    // and adds a "solved" key to the word, set as true
+    case "MARK_WORD_SOLVED":
+      let index = 0, i = 0;
+      for (let word of state.words) {
+        if (word.id === action.payload) {
+          index = i;
+        }
+        i++;
+      }
+
+      let updatedWords = state.words;
+      let currentWord = updatedWords[index];
+      updatedWords[index] = {...currentWord, solved: true};
+
+debugger
+      return {...state, words: updatedWords};
 
     default:
       return state;

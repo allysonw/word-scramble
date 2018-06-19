@@ -17,7 +17,7 @@ class Word extends Component {
       // Scramble leters on creation of the component and store in state
       scrambledLetters: Word.randomizeLetters(this.props.word.letters.split("")),
 
-      solved: false
+      solved: this.props.word.solved
     }
   }
 
@@ -73,8 +73,8 @@ class Word extends Component {
 
     // Pass the info back up the component chain to let the
     // GamePage component know to update the state indicating
-    // a word has been solved
-    this.props.onWordSolved();
+    // the word has been solved
+    this.props.onWordSolved(this.props.word.id);
   }
 
   render() {

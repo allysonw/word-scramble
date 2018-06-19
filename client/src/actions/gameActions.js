@@ -14,8 +14,16 @@ export function fetchNewGame() {
 export function updateSolvedWordCount() {
   return {
     type: 'UPDATE_SOLVED_WORD_COUNT'
-  }
+  };
 }
+
+export function markWordSolved(wordId) {
+  return {
+    type: 'MARK_WORD_SOLVED',
+    payload: wordId
+  };
+}
+
 
 // Post updates to Game to Rails API
 // Dispatched when a user wins

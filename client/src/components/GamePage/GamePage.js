@@ -4,7 +4,7 @@ import LoadingWheel from '../LoadingWheel/LoadingWheel';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchNewGame, updateSolvedWordCount, markGameComplete, saveGame } from  '../../actions/gameActions.js';
+import { fetchNewGame, updateSolvedWordCount, markGameComplete, saveGame, markWordSolved } from  '../../actions/gameActions.js';
 import './GamePage.css';
 
 // Main container component for the Play page
@@ -32,8 +32,9 @@ class GamePage extends Component {
   // Called from the Word component when a word is solved
   // Once all words belonging to a game have been solved
   // ...
-  handleWordSolved = () => {
-    this.props.updateSolvedWordCount();
+  handleWordSolved = (wordId) => {
+    this.props.updateSolvedWordCount(wordId);
+    this.props.markWordSolved(wordId);
 
     // check for a win
     if (this.props.game.solvedWordCount ===
@@ -78,7 +79,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchNewGame: fetchNewGame,
     updateSolvedWordCount: updateSolvedWordCount,
     saveGame: saveGame,
-    markGameComplete: markGameComplete
+    markGameComplete: markGameComplete,
+    markWordSolved: markWordSolved
   }, dispatch);
 };
 
