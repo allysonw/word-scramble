@@ -1,10 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Droid Serif';
-  background-color: blue;
-}
-
 .play-button {
   background-color: rgb(235,89,82);
   border-color: rgb(235,89,82);
@@ -18,4 +11,8 @@ body {
   background-color: rgb(213,44,35);
   border-color: rgb(213,44,35);
   color: white;
+}
+
+.new-game-button {
+  font-size: 1em;
 }

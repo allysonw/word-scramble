@@ -33,7 +33,7 @@ class WordInput extends Component {
   render() {
     return (
       <Col xs={8}>
-        <label>Solution: </label>
+        <label style={{marginRight: '10px'}}>Solution</label>
         <input type="text" value={this.state.value} onChange={this.handleInput} />
       </Col>
     );

@@ -60,7 +60,7 @@ class GamePage extends Component {
 
     return (
       <div className="GamePage" >
-        <button className="play-button" onClick={this.props.fetchNewGame}>New Game</button>
+        <button className="new-game-button play-button" onClick={this.props.fetchNewGame}>New Game</button>
 
         {gameContent}
       </div>

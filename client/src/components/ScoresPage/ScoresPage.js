@@ -31,12 +31,12 @@ class ScoresPage extends Component {
     return (
       <Grid>
         <Col xs={12}>
-          <Table bordered condensed>
+          <Table style={{backgroundColor: 'white'}}condensed hover>
             <thead>
               <tr>
-                <th>Player</th>
-                <th>Score</th>
-                <th>Date</th>
+                <th className="text-center">Player</th>
+                <th className="text-center">Score</th>
+                <th className="text-center">Date</th>
               </tr>
             </thead>
             <tbody>
