@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux';
 
 import { fetchHighScores } from  '../../actions/scoresActions.js';
 
+import { Table, Grid, Row, Col } from 'react-bootstrap';
+
 // Main container component for the Scores page
 class ScoresPage extends Component {
 
@@ -27,18 +29,22 @@ class ScoresPage extends Component {
     const scoresTableRows = this.props.scores.scores.map(score => <Score key={score.id} score={score} />);
 
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Score</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {scoresTableRows}
-        </tbody>
-      </table>
+      <Grid>
+        <Col xs={12}>
+          <Table bordered condensed>
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Score</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {scoresTableRows}
+            </tbody>
+          </Table>
+        </Col>
+      </Grid>
     );
   }
 
@@ -47,7 +53,9 @@ class ScoresPage extends Component {
 
     return (
       <div className="ScoresPage" >
-        {scoresContent}
+        <div>
+          {scoresContent}
+        </div>
       </div>
     );
   }

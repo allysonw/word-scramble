@@ -5,7 +5,9 @@ import LoadingWheel from '../LoadingWheel/LoadingWheel';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchNewGame, updateSolvedWordCount, markGameComplete, saveGame, markWordSolved } from  '../../actions/gameActions.js';
+
 import './GamePage.css';
+import { Button } from 'react-bootstrap';
 
 // Main container component for the Play page
 class GamePage extends Component {
@@ -59,7 +61,7 @@ class GamePage extends Component {
 
     return (
       <div className="GamePage" >
-        <button onClick={this.props.fetchNewGame}>New Game</button>
+        <Button onClick={this.props.fetchNewGame}>New Game</Button>
 
         {gameContent}
       </div>
