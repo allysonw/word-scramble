@@ -9,14 +9,24 @@
 Word Scramble is a fun game where your task is to unscramble scrambled words for points!
 
 ## Installation
-TBD
+Fork and clone this repository and run `bundle install && npm install` to install dependencies. Migrate the db with `rake db:migrate`. From the main directory, run `rake start`. The site will be launched in your browser at `localhost:3000`.
+
+* Ruby version: ruby-2.5.0
 
 ## Usage
-TBD
+Click Play to play a new game. The countdown starts at 999 seconds. Try to form the letters presented into English words. Hit Scramble to jumble the letters to help you solve it. If you need a hint, click the Hint button.
+
+The more quickly you solve all 3 word scrambles, the higher your score. Once you solve all 3 words, you win! Enter your name so it can be saved for posterity.
+
+Click High Scores to view the top 15 scores of all time.
 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/allysonw/word-scramble. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Credits
+
+Lead Developer - Allyson Wesman (@allysonw)
 
 ## License
 
