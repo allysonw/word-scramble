@@ -16,7 +16,13 @@ class GamePage extends Component {
 
     // If loading, returns the loading animation
     if (this.props.game.loading) {
-     return <LoadingWheel />;
+     return (
+       <div>
+         <LoadingWheel />
+         <p className="loading-message">Searching the dictionary for the best words for you... </p>
+       </div>
+
+     )
 
     // If a game has been loaded, returns the game
     } else if ((this.props.game.id !== undefined) &&

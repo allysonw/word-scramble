@@ -1,7 +1,8 @@
 .Loading-wheel {
-  animation: Loading-wheel-spin infinite 1s linear;
-  height: 50px;
-  width: 50px;
+  animation: Loading-wheel-spin infinite 1.2s linear;
+  height: 35px;
+  width: 35px;
+  margin-top: 10px;
 }
 
 @keyframes Loading-wheel-spin {
