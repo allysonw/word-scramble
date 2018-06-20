@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Score = (props) => {
+
+  // format the date of the high score
   const date = new Date(props.score.created_at);
   let dateString = (date.getMonth() + 1).toString() + "/";
   dateString += date.getDate().toString() + "/";

@@ -42,10 +42,12 @@ class GamePage extends Component {
   }
 
   // Called from the Word component when a word is solved
-  // Once all words belonging to a game have been solved
-  // ...
   handleWordSolved = (wordId) => {
+
+    // update solvedWordCount in state
     this.props.updateSolvedWordCount(wordId);
+
+    // mark the word solved in state
     this.props.markWordSolved(wordId);
 
     // check for a win
@@ -56,14 +58,17 @@ class GamePage extends Component {
     }
   }
 
+  // update state with player name and provide game id and score
+  // id so that reducer can make request to API to update game
+  // and score in DB. provide history so that once game and score
+  // are persisted, we can redirect the user to the high scores page
   savePlayerInputAndGame = (playerName) => {
     this.props.saveGame(this.props.game.id, this.props.game.score.id, playerName, this.props.history);
   }
 
-  // sums the score of all the words in the game
+  // returns the player's score
   calculateScore = () => {
     return this.props.game.countdown
-    // return this.props.game.words.map(word => word.difficulty).reduce(((totalScore, currentScore) => totalScore + currentScore), 0);
   }
 
   render() {

@@ -1,5 +1,7 @@
 // Request new Game object from Rails API
 // Dispatched when user clicks "New Game" button
+// POST because we are creating a new game by clicking
+// Response is the newly created Game
 export function fetchNewGame() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_GAME'});
@@ -10,6 +12,7 @@ export function fetchNewGame() {
   };
 }
 
+// Tell reducer to decrement countdown in state by 1
 export function decrementTimer() {
   return {
     type: 'DECREMENT_TIMER'
@@ -42,6 +45,8 @@ export function saveGame(gameId, scoreId, playerName, history) {
 
   // Use Thunk middleware to dispatch multiple actions
   return (dispatch, getState) => {
+
+    // update the player name in the state
     dispatch({
       type: 'UPDATE_PLAYER_NAME',
       payload: {
@@ -50,6 +55,7 @@ export function saveGame(gameId, scoreId, playerName, history) {
     });
 
     // get the new state that has the updated score
+    // with player name
     const updatedScore = getState().game.score;
 
     // first, send new score object to Rails API to persist

@@ -1,11 +1,10 @@
 class WordsApiService
-  # Returns an array of 5 new Word objects based on words from WordsAPI.
+  # Returns an array of 3 new Word objects based on words from WordsAPI.
   # Documentation: https://www.wordsapi.com/docs/#get-word-details
   def getWords
-    # words_array = [Word.find(1), Word.find(2)]
     words_array = [];
 
-    # Loop until we get X suitable words
+    # Loop until we get 3 suitable words
     while words_array.length < 3 do
       begin
         @resp = Faraday.get 'https://wordsapiv1.p.mashape.com/words?hasDetails=frequency&lettersMin=4&lettersMax=5&random=true' do |req|
@@ -26,12 +25,11 @@ class WordsApiService
         definition = body_hash['results'][0]['definition']
         frequency = body_hash['frequency']
 
-        # Only keep words that have a definition & a frequency rating that
-        # is sufficiently high (common words make the game easier and more fun)
-        # TODO: figure out a faster way to do this with a frequency above 2.5
         if frequency != nil && frequency > 2.2 && definition.present?
 
-          # Difficulty is the inverse of frequency that words appear in English
+          # Difficulty is the inverse of frequency
+          # that words appear in English (possibly will
+          # use this in later versions of the app)
           difficulty = (1/2**frequency)*100.floor
 
           new_word = Word.create(letters: word, difficulty: difficulty, definition: definition)

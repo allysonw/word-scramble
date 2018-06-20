@@ -8,6 +8,7 @@ class Hint extends Component {
     this.state = {visible: false}
   }
 
+  // When the button is clicked, toggle the visibility
   handleClick = () => {
     this.setState({ visible: !this.state.visible })
   }
@@ -24,7 +25,6 @@ class Hint extends Component {
     }
 
     return (
-      // Check props for what CSS to use
       <div>
         <button className="hint-button" onClick={this.handleClick}>{buttonText}</button>
         <br />

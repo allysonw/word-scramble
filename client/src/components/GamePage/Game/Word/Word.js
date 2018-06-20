@@ -83,7 +83,7 @@ class Word extends Component {
 
   render() {
     const lettersList = this.renderLetters();
-    let wordComponents; // scramble button and input box
+    let wordComponents; // scramble button, hint button, and input box
 
     // If solved, don't show the input, hint, or scramble button
     if (this.state.solved) {

@@ -98,6 +98,7 @@ export default function gameReducer(state = { loading: false }, action) {
 //       player: '',
 //       value: 0,
 //       created_at: '2018-06-09T16:35:02.642Z'
-//     }
+//     },
+//    countdown: 999
 //   }
 // }

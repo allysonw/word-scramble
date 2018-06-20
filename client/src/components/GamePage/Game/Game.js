@@ -26,6 +26,9 @@ class Game extends Component {
       <div>
         <Row className="timer-row">
           <Col sm={4} smOffset={4} className="">
+            {/* Let timer know current countdown & whether game
+                is complete, and provide callback for decrementing
+                countdown */}
             <Timer gameComplete={this.props.game.complete}
                    decrementTimer={this.props.decrementTimer}
                    countdown={this.props.game.countdown}/>
@@ -35,12 +38,12 @@ class Game extends Component {
       </div>
     )
 
-    // If the game is over, show the score card and player input
+    // If the game is over, hide the countdown, and
+    // show the score card and player input
     if (this.props.game.complete) {
       gameContent = (
         <div>
           {this.renderWords()}
-
           <div>
             <Col sm={4} smOffset={4} className="game-win-box">
               <ScoreCard score={this.props.game.score.value}/>

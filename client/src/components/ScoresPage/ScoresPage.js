@@ -12,10 +12,12 @@ import { Table, Grid, Col } from 'react-bootstrap';
 // Main container component for the Scores page
 class ScoresPage extends Component {
 
+  // get the high scores when the page is loaded
   componentDidMount = () => {
     this.props.fetchHighScores();
   }
 
+  // manage loading wheel
   checkStateForScores = () => {
     if (this.props.scores.loading) {
       return <LoadingWheel />;
