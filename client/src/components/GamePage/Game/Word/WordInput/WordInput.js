@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { Col } from 'react-bootstrap';
-
 class WordInput extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +19,7 @@ class WordInput extends Component {
 
     // Update state with current input
     this.setState({
-      value: e.target.value,
+      value: e.target.value.toUpperCase()
     });
   }
 
@@ -33,8 +31,7 @@ class WordInput extends Component {
   render() {
     return (
       <div style={{marginBottom: '5px'}}>
-        <label style={{marginRight: '10px'}}>Solution</label>
-        <input type="text" maxLength="6" value={this.state.value} onChange={this.handleInput} />
+        <input type="text" maxLength="6" placeholder="your answer" value={this.state.value} onChange={this.handleInput} />
       </div>
     );
   }

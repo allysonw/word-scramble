@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './PlayerInput.css'
 
 class PlayerInput extends Component {
   constructor(props) {
@@ -23,10 +24,9 @@ class PlayerInput extends Component {
   render() {
     return (
       <div>
-        <p>You Won! Please enter your name. </p>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.value} onChange={this.handleInput} />
-          <button type="submit">Save</button>
+          <input type="text" placeholder="Your Name" value={this.state.value} onChange={this.handleInput} />
+          <button className="save-button" type="submit">Save</button>
         </form>
       </div>
     );

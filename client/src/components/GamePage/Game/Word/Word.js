@@ -4,7 +4,7 @@ import Hint from './Hint/Hint';
 import WordInput from './WordInput/WordInput';
 
 import './Word.css';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 
 // Word component displays the letters making up the word
 // As well as the hint, scramble button, and word input

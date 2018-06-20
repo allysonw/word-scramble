@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 
 import { fetchHighScores } from  '../../actions/scoresActions.js';
 
-import { Table, Grid, Row, Col } from 'react-bootstrap';
+import { Table, Grid, Col } from 'react-bootstrap';
 
 // Main container component for the Scores page
 class ScoresPage extends Component {

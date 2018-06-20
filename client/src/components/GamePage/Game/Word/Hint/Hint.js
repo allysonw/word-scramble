@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import {Button } from 'react-bootstrap';
-
 class Hint extends Component {
   constructor(props) {
     super(props)

@@ -1,0 +1,9 @@
+.save-button {
+  background-color: rgb(86, 193, 19);
+  border-color: rgb(86, 193, 19);
+  color: white;
+  border-radius: 9px;
+  padding: 3px 15px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
