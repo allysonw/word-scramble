@@ -1,5 +1,11 @@
 export function decrement() {
   return {
-    type: 'DECREMENT',
+    type: 'DECREMENT'
+  };
+}
+
+expor function reset() {
+  return {
+    type: 'RESET'
   };
 }

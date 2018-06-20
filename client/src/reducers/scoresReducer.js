@@ -1,10 +1,10 @@
 export default function scoresReducer (state = { loading: false }, action) {
   switch (action.type) {
 
-    case "LOADING_SCORES":
+    case 'LOADING_SCORES':
       return {...state, loading: true };
 
-    case "ADD_SCORES":
+    case 'ADD_SCORES':
       return {...state, loading: false, scores: action.payload };
 
     default:

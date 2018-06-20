@@ -1,8 +1,12 @@
 export default function scoresReducer (state = { countdown: 999 }, action) {
   switch (action.type) {
 
-    case "DECREMENT":
+    case 'DECREMENT':
       return { countdown: --state.countdown };
+
+    case 'RESET':
+      return { countdown: 999 }
+
     default:
       return state;
   }

@@ -1,12 +1,12 @@
 export default function gameReducer(state = { loading: false }, action) {
   switch (action.type) {
 
-    case "LOADING_GAME":
+    case 'LOADING_GAME':
       return {...state, loading: true };
 
     // flatten JS object returned from API into easier
     // to access keys for the game slice of the Redux state object
-    case "ADD_GAME":
+    case 'ADD_GAME':
       return {...state,
         loading: false,
         complete: action.payload.complete,
@@ -16,28 +16,25 @@ export default function gameReducer(state = { loading: false }, action) {
         score: action.payload.score };
 
     // when a word is solved, add 1 to the solved word count
-    case "UPDATE_SOLVED_WORD_COUNT":
+    case 'UPDATE_SOLVED_WORD_COUNT':
       return {...state, solvedWordCount: ++state.solvedWordCount};
 
     // player name is updated after player inputs their name
-    case "UPDATE_PLAYER_NAME":
+    case 'UPDATE_PLAYER_NAME':
       return {...state,
               score: {...state.score,
                        player: action.payload.playerName
                      }
               };
 
-    case "SAVING_GAME":
-      return state;
-
-    case "GAME_SAVED":
-      // clear game slice of state for next game after
-      // the game is persisted to DB
+    // clear game slice of state for next game after
+    // the game is persisted to DB
+    case 'GAME_SAVED':
       return {};
 
     // as soon as game is won, mark it complete and update the
     // state with the score so we can display it to the user
-    case "MARK_GAME_COMPLETE_AND_UPDATE_SCORE":
+    case 'MARK_GAME_COMPLETE_AND_UPDATE_SCORE':
       return {...state,
               complete: true,
               score: {...state.score,
@@ -47,7 +44,7 @@ export default function gameReducer(state = { loading: false }, action) {
 
     // finds the word based on the id in the action payload
     // and adds a "solved" key to the word, set as true
-    case "MARK_WORD_SOLVED":
+    case 'MARK_WORD_SOLVED':
       let index = 0, i = 0;
       for (let word of state.words) {
 
