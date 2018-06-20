@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { decrement } from  '../../../../actions/timerActions.js';
+
 import './Timer.css';
 
 class Timer extends Component {
-  constructor(props) {
-    super(props)
-
-    // Maintain internal state to keep track of when word is solved
-    this.state = {
-      countdown: 999
-    }
-  }
-
   componentDidMount = () => {
     this.countdownID = setInterval(
       () => this.decrement(),1000
@@ -19,22 +14,34 @@ class Timer extends Component {
   }
 
   componentWillUnmount = () => {
-    clearInterval(this.timerID);
+    clearInterval(this.countdownID);
   }
 
   decrement = () => {
-    this.setState({
-      countdown: --this.state.countdown
-    });
+    this.props.decrement();
   }
 
   render() {
     return (
       <div className="timer-text">
-        Countdown: {this.state.countdown}
+        Countdown: {this.props.countdown}
       </div>
     );
   }
 }
 
-export default Timer;
+
+// Connection to Redux State
+const mapStateToProps = (state) => {
+  return ({
+    countdown: state.timer.countdown
+  });
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    decrement: decrement
+  }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timer);

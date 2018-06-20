@@ -10,7 +10,7 @@ const HomePage = (props) =>
      <h2>Welcome to Word Scramble!</h2>
      <p>
        Try to solve the scrambled words! <br />
-       Your score is based on the difficulty of the words you solve.
+       Your score is based on how quickly you solve all 3 words!
     </p>
 
      <NavLink to="/play">
