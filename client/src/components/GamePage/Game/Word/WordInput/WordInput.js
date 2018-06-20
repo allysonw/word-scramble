@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Col, Button } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 class WordInput extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class WordInput extends Component {
 
   render() {
     return (
-      <Col xs={8}>
+      <Col sm={6}>
         <label style={{marginRight: '10px'}}>Solution</label>
         <input type="text" value={this.state.value} onChange={this.handleInput} />
       </Col>

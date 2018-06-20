@@ -38,9 +38,9 @@ class Game extends Component {
     }
 
     return (
-      <Grid className="Game" >
+      <div>
         {gameContent}
-      </Grid>
+      </div>
     );
   }
 }

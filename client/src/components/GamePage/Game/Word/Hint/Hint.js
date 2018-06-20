@@ -28,7 +28,8 @@ class Hint extends Component {
     return (
       // Check props for what CSS to use
       <div>
-        <Button onClick={this.handleClick}>{buttonText}</Button>
+        <button className="hint-button" onClick={this.handleClick}>{buttonText}</button>
+        <br />
         {hintContent}
       </div>
     );
