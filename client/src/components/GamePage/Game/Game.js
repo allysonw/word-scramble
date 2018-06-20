@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Word from './Word/Word';
+import Timer from './Timer/Timer'
 import ScoreCard from './ScoreCard/ScoreCard'
 import PlayerInput from './PlayerInput/PlayerInput'
 
 import './Game.css';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 // Game component holds the words that make up the game
 class Game extends Component {
@@ -13,13 +14,24 @@ class Game extends Component {
   renderWords = () => {
     return this.props.words.map(word => {
       return (
+        <Row>
           <Word key={word.id} word={word} onWordSolved={this.props.onWordSolved}/>
+        </Row>
       );
     });
   }
 
   render() {
-    let gameContent = this.renderWords();
+    let gameContent = (
+      <div>
+        <Row className="timer-row">
+          <Col sm={4} smOffset={4} className="">
+            <Timer />
+          </Col>
+        </Row>
+        {this.renderWords()}
+      </div>
+    )
 
     // If the game is over, show the score card and player input
     if (this.props.game.complete) {
