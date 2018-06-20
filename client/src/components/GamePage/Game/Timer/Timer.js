@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { decrement } from  '../../../../actions/timerActions.js';
-
 import './Timer.css';
 
 class Timer extends Component {
@@ -18,7 +13,15 @@ class Timer extends Component {
   }
 
   decrement = () => {
-    this.props.decrement();
+    // reset the timer when the game ends
+    if (this.props.gameComplete === undefined) {
+      console.log("timer props" + this.props)
+      clearInterval(this.countdownID);
+    }
+    else {
+      this.props.decrementTimer();
+    }
+
   }
 
   render() {
@@ -31,17 +34,22 @@ class Timer extends Component {
 }
 
 
-// Connection to Redux State
-const mapStateToProps = (state) => {
-  return ({
-    countdown: state.timer.countdown
-  });
-};
+// // Connection to Redux State
+// const mapStateToProps = (state) => {
+//   return ({
+//     countdown: state.timer.countdown,
+//     gameComplete: state.game.complete,
+//     playerName: state.game.score.player
+//   });
+// };
+//
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({
+//     decrement: decrement,
+//     reset: reset
+//   }, dispatch);
+// };
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(Timer);
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    decrement: decrement
-  }, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Timer);
+export default Timer;

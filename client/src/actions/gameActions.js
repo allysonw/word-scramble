@@ -10,6 +10,12 @@ export function fetchNewGame() {
   };
 }
 
+export function decrementTimer() {
+  return {
+    type: 'DECREMENT_TIMER'
+  };
+}
+
 // Tell reducer to add one to the solved word count
 // Dispatched when a Word component is solved
 export function updateSolvedWordCount() {

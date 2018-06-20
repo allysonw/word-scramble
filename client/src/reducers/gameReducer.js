@@ -13,7 +13,13 @@ export default function gameReducer(state = { loading: false }, action) {
         id: action.payload.id,
         words: action.payload.words,
         solvedWordCount: 0,
-        score: action.payload.score };
+        score: action.payload.score,
+        countdown: 999 };
+
+    // decrement the timer every second
+    case 'DECREMENT_TIMER':
+      return {...state,
+              countdown: --state.countdown };
 
     // when a word is solved, add 1 to the solved word count
     case 'UPDATE_SOLVED_WORD_COUNT':

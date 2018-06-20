@@ -4,7 +4,7 @@ import LoadingWheel from '../LoadingWheel/LoadingWheel';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchNewGame, updateSolvedWordCount, markGameComplete, saveGame, markWordSolved } from  '../../actions/gameActions.js';
+import { fetchNewGame, decrementTimer, updateSolvedWordCount, markGameComplete, saveGame, markWordSolved } from  '../../actions/gameActions.js';
 
 import './GamePage.css';
 
@@ -22,7 +22,12 @@ class GamePage extends Component {
     } else if ((this.props.game.id !== undefined) &&
               (this.props.game.loading === false)) {
 
-     return <Game game={this.props.game} words={this.props.game.words} onWordSolved={this.handleWordSolved} saveGame={this.savePlayerInputAndGame} calculateScore={this.props.calculateScore}/>;
+     return <Game game={this.props.game}
+                  words={this.props.game.words}
+                  onWordSolved={this.handleWordSolved}
+                  saveGame={this.savePlayerInputAndGame} calculateScore={this.props.calculateScore}
+                  decrementTimer={this.props.decrementTimer}
+            />;
 
    // Otherwise, returns nothing
    } else {
@@ -51,7 +56,7 @@ class GamePage extends Component {
 
   // sums the score of all the words in the game
   calculateScore = () => {
-    return this.props.countdown
+    return this.props.game.countdown
     // return this.props.game.words.map(word => word.difficulty).reduce(((totalScore, currentScore) => totalScore + currentScore), 0);
   }
 
@@ -72,14 +77,14 @@ class GamePage extends Component {
 // Connection to Redux State
 const mapStateToProps = (state) => {
   return ({
-    game: state.game,
-    countdown: state.timer.countdown
+    game: state.game
   });
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchNewGame: fetchNewGame,
+    decrementTimer: decrementTimer,
     updateSolvedWordCount: updateSolvedWordCount,
     saveGame: saveGame,
     markGameComplete: markGameComplete,

@@ -26,7 +26,9 @@ class Game extends Component {
       <div>
         <Row className="timer-row">
           <Col sm={4} smOffset={4} className="">
-            <Timer />
+            <Timer gameComplete={this.props.game.complete}
+                   decrementTimer={this.props.decrementTimer}
+                   countdown={this.props.game.countdown}/>
           </Col>
         </Row>
         {this.renderWords()}
@@ -38,6 +40,7 @@ class Game extends Component {
       gameContent = (
         <div>
           {this.renderWords()}
+
           <div>
             <Col sm={4} smOffset={4} className="game-win-box">
               <ScoreCard score={this.props.game.score.value}/>

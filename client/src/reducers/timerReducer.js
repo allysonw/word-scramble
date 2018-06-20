@@ -4,8 +4,9 @@ export default function scoresReducer (state = { countdown: 999 }, action) {
     case 'DECREMENT':
       return { countdown: --state.countdown };
 
+    // return the current countdown once the game is over
     case 'RESET':
-      return { countdown: 999 }
+      return { countdown: 999 };
 
     default:
       return state;
