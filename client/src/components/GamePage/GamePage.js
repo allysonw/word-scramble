@@ -51,7 +51,8 @@ class GamePage extends Component {
 
   // sums the score of all the words in the game
   calculateScore = () => {
-    return this.props.game.words.map(word => word.difficulty).reduce(((totalScore, currentScore) => totalScore + currentScore), 0);
+    return this.props.countdown
+    // return this.props.game.words.map(word => word.difficulty).reduce(((totalScore, currentScore) => totalScore + currentScore), 0);
   }
 
   render() {
@@ -71,7 +72,8 @@ class GamePage extends Component {
 // Connection to Redux State
 const mapStateToProps = (state) => {
   return ({
-    game: state.game
+    game: state.game,
+    countdown: state.timer.countdown
   });
 };
 

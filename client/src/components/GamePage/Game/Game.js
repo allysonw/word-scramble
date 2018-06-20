@@ -14,7 +14,7 @@ class Game extends Component {
   renderWords = () => {
     return this.props.words.map(word => {
       return (
-        <Row>
+        <Row key={word.id}>
           <Word key={word.id} word={word} onWordSolved={this.props.onWordSolved}/>
         </Row>
       );
