@@ -15,31 +15,3 @@
 .new-game-button {
   font-size: 1em;
 }
-
-.scramble-button {
-  background-color: rgb(244, 179, 26);
-  border-color: rgb(244, 179, 26);
-  color: white;
-  border-radius: 13px;
-  padding: 3px 15px;
-}
-
-.scramble-button:hover {
-  background-color: rgb(229, 168, 25);
-  border-color: rgb(229, 168, 25);
-}
-
-
-.hint-button {
-  background-color: rgb(86, 193, 19);
-  border-color: rgb(86, 193, 19);
-  color: white;
-  border-radius: 13px;
-  padding: 3px 15px;
-  margin: 5px 10px 5px 0px;
-}
-
-.hint-button:hover {
-  background-color: rgb(74, 165, 16);
-  border-color: rgb(74, 165, 16);
-}

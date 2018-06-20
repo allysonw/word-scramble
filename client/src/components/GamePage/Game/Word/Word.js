@@ -93,18 +93,16 @@ class Word extends Component {
         <div>
           {/* Give WordInput knowlegde of the word and a callback
               to use if the word is solved */}
-          <Row>
+          <Row className="justify-content-md-center" >
             <WordInput word={this.props.word} onSolved={this.handleSolved}/>
-
-            <Col sm={6}>
-              <button className="scramble-button" onClick={this.scramble}>Scramble</button>
-            </Col>
           </Row>
 
-          <Row className="justify-content-md-center hint-row">
+          <Row className="justify-content-md-center word-component-row">
+            <button className="scramble-button" onClick={this.scramble}>Scramble</button>
+          </Row>
 
-              <Hint definition={this.props.word.definition}/>
-
+          <Row className="justify-content-md-center word-component-row">
+            <Hint definition={this.props.word.definition}/>
           </Row>
         </div>
       )

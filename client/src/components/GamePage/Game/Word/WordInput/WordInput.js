@@ -32,10 +32,10 @@ class WordInput extends Component {
 
   render() {
     return (
-      <Col sm={6}>
+      <div style={{marginBottom: '5px'}}>
         <label style={{marginRight: '10px'}}>Solution</label>
-        <input type="text" value={this.state.value} onChange={this.handleInput} />
-      </Col>
+        <input type="text" maxLength="6" value={this.state.value} onChange={this.handleInput} />
+      </div>
     );
   }
 }
