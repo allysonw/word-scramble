@@ -7,10 +7,10 @@ export function fetchNewGame() {
     dispatch({ type: 'LOADING_GAME'});
 
     // DEVELOPMENT
-    const gamePostUrl = 'http://localhost:3001/api/v1/games'
+    // const gamePostUrl = 'http://localhost:3001/api/v1/games'
 
     // PRODUCTION
-    // const gamePostUrl = 'https://word-scramble-rails-api.herokuapp.com/api/v1/games'
+    const gamePostUrl = 'https://word-scramble-rails-api.herokuapp.com/api/v1/games'
 
     return fetch(gamePostUrl, { method: 'POST'})
     .then(res => res.json())
@@ -47,12 +47,12 @@ export function markWordSolved(wordId) {
 // Dispatched when a user wins
 export function saveGame(gameId, scoreId, playerName, history) {
   // DEVELOPMENT
-  const gamePatchUrl = `http://localhost:3001/api/v1/games/${gameId}`
-  const scorePatchUrl = `http://localhost:3001/api/v1/scores/${scoreId}`
+  // const gamePatchUrl = `http://localhost:3001/api/v1/games/${gameId}`
+  // const scorePatchUrl = `http://localhost:3001/api/v1/scores/${scoreId}`
 
   // PRODUCTION
-  // const gamePatchUrl = `https://word-scramble-rails-api.herokuapp.com/api/v1/games/${gameId}`
-  // const scorePatchUrl = `https://word-scramble-rails-api.herokuapp.com/api/v1/scores/${scoreId}`
+  const gamePatchUrl = `https://word-scramble-rails-api.herokuapp.com/api/v1/games/${gameId}`
+  const scorePatchUrl = `https://word-scramble-rails-api.herokuapp.com/api/v1/scores/${scoreId}`
 
   // Use Thunk middleware to dispatch multiple actions
   return (dispatch, getState) => {
