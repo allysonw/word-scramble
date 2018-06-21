@@ -6,7 +6,13 @@ export function fetchNewGame() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_GAME'});
 
-    return fetch('/api/v1/games', { method: 'POST'})
+    // DEVELOPMENT
+    // const gamePostUrl = '/api/v1/games'
+
+    // PRODUCTION
+    const gamePostUrl = 'https://word-scramble-rails-api.herokuapp.com/api/v1/games'
+
+    return fetch(gamePostUrl, { method: 'POST'})
     .then(res => res.json())
     .then(game => dispatch({ type: 'ADD_GAME', payload: game }));
   };
@@ -40,8 +46,13 @@ export function markWordSolved(wordId) {
 // Post updates to the Rails API
 // Dispatched when a user wins
 export function saveGame(gameId, scoreId, playerName, history) {
-  const gamePatchUrl = `/api/v1/games/${gameId}`
-  const scorePatchUrl = `/api/v1/scores/${scoreId}`
+  // DEVELOPMENT
+  // const gamePatchUrl = `/api/v1/games/${gameId}`
+  // const scorePatchUrl = `/api/v1/scores/${scoreId}`
+
+  // PRODUCTION
+  const gamePatchUrl = `https://word-scramble-rails-api.herokuapp.com/api/v1/games/${gameId}`
+  const scorePatchUrl = `https://word-scramble-rails-api.herokuapp.com/api/v1/scores/${scoreId}`
 
   // Use Thunk middleware to dispatch multiple actions
   return (dispatch, getState) => {

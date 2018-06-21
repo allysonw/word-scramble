@@ -3,7 +3,14 @@
 export function fetchHighScores() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_SCORES'});
-    return fetch('/api/v1/scores', { method: 'GET'})
+
+    // DEVELOPMENT
+    // const scoresGetUrl = '/api/v1/scores'
+
+    // PRODUCTION
+    const scoresGetUrl = 'https://word-scramble-rails-api.herokuapp.com/api/v1/scores'
+
+    return fetch(scoresGetUrl, { method: 'GET'})
     .then(res => res.json())
     .then(scores => dispatch({ type: 'ADD_SCORES', payload: scores }));
   };
