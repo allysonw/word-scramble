@@ -11,7 +11,7 @@ Word Scramble is a fun game where your task is to unscramble scrambled words for
 ![demo](https://media.giphy.com/media/RkHLsnKhhx7I5iJysa/giphy.gif)
 
 ## Installation
-Fork and clone this repository and run `bundle install && npm install` to install dependencies. Migrate the db with `rake db:migrate`. From the main directory, run `rake start`. The site will be launched in your browser at `localhost:3000`.
+Fork and clone this repository. From the `rails-app` folder, run `bundle install` and migrate the db with `rake db:migrate`. From the `react-app` folder, run `npm install`.  From `rails-app` directory, run `rake start`. The site will be launched in your browser at `localhost:3000`.
 
 * Ruby version: ruby-2.5.0
 
