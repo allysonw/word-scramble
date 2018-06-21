@@ -5,10 +5,10 @@ export function fetchHighScores() {
     dispatch({ type: 'LOADING_SCORES'});
 
     // DEVELOPMENT
-    // const scoresGetUrl = '/api/v1/scores'
+     const scoresGetUrl = 'http://localhost:3001/api/v1/scores'
 
     // PRODUCTION
-    const scoresGetUrl = 'https://word-scramble-rails-api.herokuapp.com/api/v1/scores'
+    //const scoresGetUrl = 'https://word-scramble-rails-api.herokuapp.com/api/v1/scores'
 
     return fetch(scoresGetUrl, { method: 'GET'})
     .then(res => res.json())
