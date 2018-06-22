@@ -15,7 +15,9 @@ class Game extends Component {
     return this.props.words.map(word => {
       return (
         <Row key={word.id}>
-          <Word key={word.id} word={word} onWordSolved={this.props.onWordSolved}/>
+          <Col md={8} className="centered-col">
+            <Word key={word.id} word={word} onWordSolved={this.props.onWordSolved}/>
+          </Col>
         </Row>
       );
     });
@@ -25,7 +27,7 @@ class Game extends Component {
     let gameContent = (
       <div>
         <Row className="timer-row">
-          <Col sm={4} smOffset={4} className="">
+          <Col sm={4} className="centered-col">
             {/* Let timer know current countdown & whether game
                 is complete, and provide callback for decrementing
                 countdown */}
@@ -45,10 +47,14 @@ class Game extends Component {
         <div>
           {this.renderWords()}
           <div>
-            <Col sm={4} smOffset={4} className="game-win-box">
-              <ScoreCard score={this.props.game.score.value}/>
-              <PlayerInput saveGame={this.props.saveGame}/>
-            </Col>
+            <Row>
+              <Col sm={4} className="centered-col">
+                <div className="game-win-box">
+                  <ScoreCard score={this.props.game.score.value}/>
+                  <PlayerInput saveGame={this.props.saveGame}/>
+                </div>
+              </Col>
+            </Row>
           </div>
         </div>
       )
