@@ -5,7 +5,8 @@ import './HomePage.css'
 
 const HomePage = (props) =>
   <div className="col-md-6 centered-col welcome-box">
-     <div className="game-name">WORD SCRAMBLE</div>
+     <div className="game-name-word">WORD</div>
+      <div className="game-name-scramble">SCRAMBLE</div>
      <p className="intro-text">
        Try to solve the scrambled words! <br />
        Your score is based on how quickly you solve all 3 words.

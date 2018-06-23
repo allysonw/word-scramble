@@ -37,9 +37,9 @@ class ScoresPage extends Component {
           <Table className="scores-table">
             <thead className="scores-table-header">
               <tr>
-                <th className="text-center">Player</th>
-                <th className="text-center">Score</th>
-                <th className="text-center">Date</th>
+                <th className="text-center">PLAYER</th>
+                <th className="text-center">SCORE</th>
+                <th className="text-center">DATE</th>
               </tr>
             </thead>
             <tbody>

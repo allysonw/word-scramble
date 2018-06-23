@@ -2,9 +2,15 @@
   background-color: white;
 }
 
-.game-name {
+.game-name-word {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 7em;
+}
+
+.game-name-scramble {
   font-family: 'Fredericka the Great', cursive;
   font-size: 4em;
+  margin-top: -40px;
 }
 
 .centered-col {

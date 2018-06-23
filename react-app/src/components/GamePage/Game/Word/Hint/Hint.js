@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Hint.css'
+
 class Hint extends Component {
   constructor(props) {
     super(props)
@@ -19,7 +21,7 @@ class Hint extends Component {
 
     if (this.state.visible) {
       buttonText = 'Hide Hint'
-      hintContent = this.props.definition
+      hintContent = (<div className="hint-text">{this.props.definition}</div>)
     } else {
       buttonText = 'Show Hint'
     }
