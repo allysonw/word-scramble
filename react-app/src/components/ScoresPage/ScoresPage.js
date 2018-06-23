@@ -34,7 +34,7 @@ class ScoresPage extends Component {
     return (
       <Grid>
         <Col md={7} className="centered-col">
-          <Table className="scores-table">
+          <Table responsive className="scores-table">
             <thead className="scores-table-header">
               <tr>
                 <th className="text-center">PLAYER</th>
