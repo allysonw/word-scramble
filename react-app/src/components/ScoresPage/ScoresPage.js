@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 
 import { fetchHighScores } from  '../../actions/scoresActions.js';
 
+import './ScoresPage.css'
 import { Table, Grid, Col } from 'react-bootstrap';
 
 // Main container component for the Scores page
@@ -32,9 +33,9 @@ class ScoresPage extends Component {
 
     return (
       <Grid>
-        <Col xs={12}>
-          <Table style={{backgroundColor: 'white'}}condensed hover>
-            <thead>
+        <Col md={7} className="centered-col">
+          <Table className="scores-table">
+            <thead className="scores-table-header">
               <tr>
                 <th className="text-center">Player</th>
                 <th className="text-center">Score</th>

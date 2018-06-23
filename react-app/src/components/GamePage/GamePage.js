@@ -35,9 +35,11 @@ class GamePage extends Component {
                   decrementTimer={this.props.decrementTimer}
             />;
 
-   // Otherwise, returns nothing
+   // Otherwise, show new game button
    } else {
-     return '';
+     return (
+         <button className="new-game-button play-button" onClick={this.props.fetchNewGame}>New Game</button>
+     );
     }
   }
 
@@ -77,8 +79,6 @@ class GamePage extends Component {
 
     return (
       <div className="GamePage" >
-        <button className="new-game-button play-button" onClick={this.props.fetchNewGame}>New Game</button>
-
         {gameContent}
       </div>
     );

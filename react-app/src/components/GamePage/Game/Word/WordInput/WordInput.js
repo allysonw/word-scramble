@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './WordInput.css'
 
 class WordInput extends Component {
   constructor(props) {
@@ -30,8 +31,8 @@ class WordInput extends Component {
 
   render() {
     return (
-      <div style={{marginBottom: '5px'}}>
-        <input type="text" maxLength="6" placeholder="your answer" value={this.state.value} onChange={this.handleInput} />
+      <div className="word-input-box">
+        <input type="text" maxLength={this.props.word.letters.length} placeholder="YOUR ANSWER" value={this.state.value} onChange={this.handleInput} />
       </div>
     );
   }
