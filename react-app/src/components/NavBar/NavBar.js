@@ -14,7 +14,7 @@ const NavBar = () => {
         Play
       </NavLink>
 
-      <NavLink className="nav-link" to="/high-scores">
+      <NavLink className="nav-link nav-link-right" to="/high-scores">
        High Scores
       </NavLink>
     </div>

@@ -1,9 +1,13 @@
 .nav-link, .nav-link:visited {
   font-family: 'Pacifico', cursive;
   margin-right: 30px;
-  font-size: 2em;
+  font-size: 1.75em;
   color: white;
   text-decoration: none !important;
+}
+
+.nav-link-right {
+  margin-right: 0px;
 }
 
 .nav-link:hover {
