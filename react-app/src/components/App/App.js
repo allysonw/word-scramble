@@ -13,11 +13,15 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="app container">
-        <NavBar />
-          <Route exact path="/" component={HomePage} />
-          <Route path="/high-scores" component={ScoresPage}/>
-          <Route path="/play" component={GamePage}/>
+        <div className="app container-fluid">
+
+          <div className="app-content">
+            <NavBar />
+
+            <Route exact path="/" component={HomePage} />
+            <Route path="/high-scores" component={ScoresPage}/>
+            <Route path="/play" component={GamePage}/>
+          </div>
         </div>
       </Router>
     );

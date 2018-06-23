@@ -1,22 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Jumbotron } from 'react-bootstrap';
-
 import './HomePage.css'
 
 const HomePage = (props) =>
-  <Jumbotron className="box">
-     <h2>Welcome to Word Scramble!</h2>
-     <p>
+  <div className="col-md-6 centered-col welcome-box">
+     <div className="game-name">WORD SCRAMBLE</div>
+     <p className="intro-text">
        Try to solve the scrambled words! <br />
        Your score is based on how quickly you solve all 3 words.
     </p>
 
      <NavLink to="/play">
-        <button className="play-button"> Play </button>
+        <button className="play-button"> PLAY </button>
      </NavLink>
 
-  </Jumbotron>;
+  </div>;
 
 export default HomePage;

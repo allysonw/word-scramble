@@ -15,7 +15,7 @@ class Game extends Component {
     return this.props.words.map(word => {
       return (
         <Row key={word.id}>
-          <Col md={8} className="centered-col">
+          <Col md={7} className="centered-col">
             <Word key={word.id} word={word} onWordSolved={this.props.onWordSolved}/>
           </Col>
         </Row>

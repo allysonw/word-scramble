@@ -1,3 +1,41 @@
 .jumbotron {
   background-color: white;
 }
+
+.game-name {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 4em;
+}
+
+.centered-col {
+  float: none;
+  margin: 0 auto;
+}
+
+.welcome-box {
+  background-color: ;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.play-button {
+  font-family: 'Fredericka the Great', cursive;
+  background-color: rgb(235,89,82);
+  border-color: rgb(235,89,82);
+  color: white;
+  font-size: 2em;
+  border-radius: 13px;
+  padding: 3px 15px;
+}
+
+.play-button:hover {
+  background-color: rgb(213,44,35);
+  border-color: rgb(213,44,35);
+}
+
+.intro-text {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+
+}

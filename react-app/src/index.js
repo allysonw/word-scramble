@@ -15,7 +15,7 @@ import WebFont from 'webfontloader';
 
 WebFont.load({
     google: {
-      families: ['Droid Sans', 'Droid Serif', 'Fredericka the Great', 'Eater']
+      families: ['Droid Sans', 'Droid Serif', 'Fredericka the Great', 'Eater', 'Pacifico', 'Roboto Condensed']
     }
 });
 
