@@ -1,14 +1,12 @@
+import { API_ROOT } from './api-config';
+
 // Request high scores from Rails API
 // Dispatched when user loads Scores page
 export function fetchHighScores() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_SCORES'});
 
-    // DEVELOPMENT
-    // const scoresGetUrl = 'http://localhost:3001/api/v1/scores'
-
-    // PRODUCTION
-    const scoresGetUrl = 'https://word-scramble-rails-api.herokuapp.com/api/v1/scores'
+    const scoresGetUrl = `${API_ROOT}/scores`
 
     return fetch(scoresGetUrl, { method: 'GET'})
     .then(res => res.json())
