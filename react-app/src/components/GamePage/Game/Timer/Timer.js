@@ -10,19 +10,16 @@ class Timer extends Component {
   }
 
   componentWillUnmount = () => {
+    // when user clicks away or the game is over,
+    // stop the countdown
     clearInterval(this.countdownID);
   }
 
   decrement = () => {
-    // reset the timer when the game ends
-    // TODO - figure out why this works with
-    // undefined and not false
-    if (this.props.gameComplete === undefined) {
-      clearInterval(this.countdownID);
-    }
-    else {
-      this.props.decrementTimer();
-    }
+    // callback is a prop of GamePage.js
+    // sends action to Redux reducer to decrement
+    // value of countdown in the overall state store
+    this.props.decrementTimer();
   }
 
   render() {
