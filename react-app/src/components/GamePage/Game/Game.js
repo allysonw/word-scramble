@@ -40,21 +40,20 @@ class Game extends Component {
       </div>
     )
 
-    // If the game is over, hide the countdown, and
-    // show the score card and player input
+    // If the game is over, dim the page, hide the
+    // countdown, and show the score card and player input
     if (this.props.game.complete) {
       gameContent = (
         <div>
-          {this.renderWords()}
+          <div className="dimmed-overlay"></div>
           <div>
-            <Row>
-              <Col sm={4} className="centered-col">
-                <div className="game-win-box">
-                  <ScoreCard score={this.props.game.score.value}/>
-                  <PlayerInput saveGame={this.props.saveGame}/>
-                </div>
-              </Col>
-            </Row>
+            {this.renderWords()}
+          </div>
+          <div>
+            <div className="centered-col game-win-box">
+              <ScoreCard score={this.props.game.score.value}/>
+              <PlayerInput saveGame={this.props.saveGame}/>
+            </div>
           </div>
         </div>
       )
