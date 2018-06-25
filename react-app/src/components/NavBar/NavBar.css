@@ -10,7 +10,7 @@
   margin-right: 0px;
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link:focus {
   color: yellow;
   text-decoration: none !important;
 }
