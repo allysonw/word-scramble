@@ -24,7 +24,7 @@ class Timer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="timer-content">
         <div className="timer-label-text">
           Time
         </div>

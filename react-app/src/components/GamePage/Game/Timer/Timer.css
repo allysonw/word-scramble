@@ -1,7 +1,3 @@
-.timer-row {
-  margin-top: 10px;
-}
-
 .timer-text {
   background-color: rgba(235,89,82,1);
   border-radius: 17px;
@@ -16,3 +12,11 @@
   font-size: 1.3em;
   margin-top: -5px;
 }
+
+/* .timer-content {
+  position: fixed;
+  top: 100; 
+  z-index: 5;
+  left: 50%;
+  transform: translateX(-50%);
+} */

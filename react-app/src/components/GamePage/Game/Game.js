@@ -26,7 +26,7 @@ class Game extends Component {
   render() {
     let gameContent = (
       <div>
-        <Row className="timer-row">
+        <Row>
           <Col sm={2} xs={6} className="centered-col">
             {/* Let timer know current countdown & whether game
                 is complete, and provide callback for decrementing
