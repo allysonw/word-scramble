@@ -24,9 +24,16 @@ class Timer extends Component {
 
   render() {
     return (
-      <div className="timer-text">
-        Countdown: {this.props.countdown}
+      <div>
+        <div className="timer-label-text">
+          Time
+        </div>
+
+        <div className="timer-text">
+          {this.props.countdown}
+        </div>
       </div>
+
     );
   }
 }
