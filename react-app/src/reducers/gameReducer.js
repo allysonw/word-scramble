@@ -51,19 +51,11 @@ export default function gameReducer(state = { loading: false }, action) {
     // finds the word based on the id in the action payload
     // and adds a "solved" key to the word, set as true
     case 'MARK_WORD_SOLVED':
-      let index = 0, i = 0;
-      for (let word of state.words) {
+      // find index of word to update in words array in state
+      let index = state.words.map(word => word.id).indexOf(action.payload);
 
-        // if the word is the one we are searching for, remember
-        // its index in the words array
-        if (word.id === action.payload) {
-          index = i;
-        }
-        i++;
-      }
-
-      // get the words array from current state
-      let updatedWords = state.words;
+      // copy the words array from current state
+      let updatedWords = state.words.slice(0);
 
       // get the word we need to update
       let currentWord = updatedWords[index];
