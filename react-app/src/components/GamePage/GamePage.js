@@ -100,13 +100,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchNewGame: fetchNewGame,
-    decrementTimer: decrementTimer,
-    updateSolvedWordCount: updateSolvedWordCount,
-    saveGame: saveGame,
-    markGameComplete: markGameComplete,
-    markWordSolved: markWordSolved,
-    resetGame: resetGame
+    fetchNewGame,
+    decrementTimer,
+    updateSolvedWordCount,
+    saveGame,
+    markGameComplete,
+    markWordSolved,
+    resetGame
   }, dispatch);
 };
 
