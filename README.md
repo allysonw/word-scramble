@@ -8,7 +8,7 @@
 
 Word Scramble is a fun game where your task is to unscramble scrambled words for points!
 
-![demo](https://media.giphy.com/media/RkHLsnKhhx7I5iJysa/giphy.gif)
+![demo](https://media.giphy.com/media/oysCGIV1inoexjw3H9/giphy.gif)
 
 ## Installation
 Fork and clone this repository. From the `rails-app` folder, run `bundle install` and migrate the db with `rake db:migrate`. From the `react-app` folder, run `npm install`.
