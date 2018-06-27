@@ -16,7 +16,6 @@
   border-radius: 13px;
   padding: 3px 15px;
   margin-bottom: 5px;
-  cursor: pointer;
 }
 
 .scramble-button:hover {
@@ -32,7 +31,6 @@
   border-radius: 13px;
   padding: 3px 15px;
   margin-bottom: 5px;
-  cursor: pointer;
 }
 
 .hint-button:hover {

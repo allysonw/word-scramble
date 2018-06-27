@@ -10,7 +10,7 @@ import { Row } from 'react-bootstrap';
 // As well as the hint, scramble button, and word input
 class Word extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     // Maintain internal state to keep track of when word is solved
     this.state = {
