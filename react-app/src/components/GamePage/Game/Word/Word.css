@@ -16,6 +16,7 @@
   border-radius: 13px;
   padding: 3px 15px;
   margin-bottom: 5px;
+  touch-action: none;
 }
 
 .scramble-button:hover {
