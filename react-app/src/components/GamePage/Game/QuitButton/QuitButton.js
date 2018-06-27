@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import QuitInput from './QuitInput/QuitInput';
+
 import './QuitButton.css';
 
 class QuitButton extends Component {
@@ -7,25 +9,30 @@ class QuitButton extends Component {
     super(props);
 
     this.state = {
-      quitText: "Quit Game",
-      quitClicks: 0
+      showQuitInput: false
     }
   }
 
-  confirmQuit = () => {
-    if (this.state.quitClicks > 1) {
-      this.props.quitGame();
-    }
-
+  showQuitInput = () => {
     this.setState({
-      quitText: "Click to Confirm Quit",
-      quitClicks: 2
-    });
+      showQuitInput: true
+    })
+  }
+
+  clearQuitInput = () => {
+    this.setState({
+      showQuitInput: false
+    })
   }
 
   render() {
+
     return (
-      <button onClick={this.confirmQuit} className="quit-button">{this.state.quitText}</button>
+      <div>
+        <button onClick={this.showQuitInput} className="quit-button">Quit Game</button>
+
+        {this.state.showQuitInput && <QuitInput quitGame={this.props.quitGame} dontQuit={this.clearQuitInput} />}
+      </div>
     );
   }
 

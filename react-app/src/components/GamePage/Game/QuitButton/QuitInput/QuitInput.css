@@ -1,0 +1,28 @@
+.quit-answer {
+  color: white;
+  border-radius: 9px;
+  padding: 3px 15px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.yes-button {
+  background-color: rgb(86, 193, 19);
+  border-color: rgb(86, 193, 19);
+  margin-right: 10px;
+}
+
+.yes-button:hover{
+  background-color: rgb(74, 165, 16);
+  border-color: rgb(74, 165, 16);
+}
+
+.no-button {
+  background-color: red;
+  border-color: red;
+}
+
+.no-button:hover {
+  background-color: rgb(209, 62, 25);
+  border-color: rgb(209, 62, 25);
+}

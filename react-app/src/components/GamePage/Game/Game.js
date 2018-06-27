@@ -54,7 +54,7 @@ class Game extends Component {
             {this.renderWords()}
           </div>
           <div>
-            <div className="centered-col game-win-box">
+            <div className="centered-col pop-up-box">
               <ScoreCard score={this.props.game.score.value}/>
               <PlayerInput saveGame={this.props.saveGame}/>
             </div>

@@ -1,15 +1,16 @@
-.game-win-box {
+.pop-up-box {
   padding: 20px;
   background-color: white;
   color: black;
   border-color: black;
-  border-radius: 5px;
+  border-radius: 13px;
   margin: 0 auto;
   position: fixed;
   top: 150px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
+  font-size: 1.25em;
 }
 
 .quit-button-div {
