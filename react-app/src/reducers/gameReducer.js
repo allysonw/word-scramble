@@ -65,6 +65,11 @@ export default function gameReducer(state = { loading: false }, action) {
 
       return {...state, words: updatedWords};
 
+    // clear game slice of state for next game after
+    // player requests to quit
+    case 'RESET_GAME':
+      return {};
+
     default:
       return state;
   }

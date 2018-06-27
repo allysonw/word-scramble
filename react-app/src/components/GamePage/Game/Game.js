@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Word from './Word/Word';
 import Timer from './Timer/Timer'
+import QuitButton from './QuitButton/QuitButton'
 import ScoreCard from './ScoreCard/ScoreCard'
 import PlayerInput from './PlayerInput/PlayerInput'
 
@@ -37,6 +38,7 @@ class Game extends Component {
           </Col>
         </Row>
         {this.renderWords()}
+        <QuitButton quitGame={this.props.quitGame} />
       </div>
     )
 

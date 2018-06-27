@@ -101,3 +101,9 @@ export function markGameComplete(scoreValue) {
     payload: { scoreValue: scoreValue }
   }
 }
+
+export function resetGame() {
+  return {
+    type: 'RESET_GAME'
+  }
+}

@@ -4,7 +4,7 @@ import LoadingWheel from '../LoadingWheel/LoadingWheel';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchNewGame, decrementTimer, updateSolvedWordCount, markGameComplete, saveGame, markWordSolved } from  '../../actions/gameActions.js';
+import { fetchNewGame, decrementTimer, updateSolvedWordCount, markGameComplete, saveGame, markWordSolved, resetGame } from  '../../actions/gameActions.js';
 
 import './GamePage.css';
 
@@ -33,6 +33,7 @@ class GamePage extends Component {
                   onWordSolved={this.handleWordSolved}
                   saveGame={this.savePlayerInputAndGame} calculateScore={this.props.calculateScore}
                   decrementTimer={this.props.decrementTimer}
+                  quitGame={this.quitGame}
             />;
 
    // Otherwise, show new game button
@@ -73,6 +74,11 @@ class GamePage extends Component {
     return this.props.game.countdown
   }
 
+  // quit the game and reset if the player chooses to
+  quitGame = () => {
+    this.props.resetGame();
+  }
+
   render() {
     // get content for the main Game area
     const gameContent = this.checkStateForGameContent();
@@ -99,7 +105,8 @@ const mapDispatchToProps = (dispatch) => {
     updateSolvedWordCount: updateSolvedWordCount,
     saveGame: saveGame,
     markGameComplete: markGameComplete,
-    markWordSolved: markWordSolved
+    markWordSolved: markWordSolved,
+    resetGame: resetGame
   }, dispatch);
 };
 
