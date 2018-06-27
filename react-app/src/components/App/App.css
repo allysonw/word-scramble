@@ -11,6 +11,7 @@ html, body {
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
   touch-action: none;
+  cursor: pointer;
 }
 
 .app-content {

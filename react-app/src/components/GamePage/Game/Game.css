@@ -12,6 +12,10 @@
   z-index: 2;
 }
 
+.quit-button-div {
+  margin-bottom: 40px;
+}
+
 .centered-col {
   float: none;
   margin: 0 auto;

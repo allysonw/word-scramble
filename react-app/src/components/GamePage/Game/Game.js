@@ -38,7 +38,9 @@ class Game extends Component {
           </Col>
         </Row>
         {this.renderWords()}
-        <QuitButton quitGame={this.props.quitGame} />
+        <div className="quit-button-div">
+          <QuitButton quitGame={this.props.quitGame} />
+        </div>
       </div>
     )
 
