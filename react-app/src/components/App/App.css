@@ -10,7 +10,8 @@ html, body {
   background-color: #3c64c9;
   color: white;
   font-family: 'Roboto Condensed', sans-serif;
-  touch-action: manipulation;
+  touch-action: none;
+  cursor: pointer;
 }
 
 .app-content {
