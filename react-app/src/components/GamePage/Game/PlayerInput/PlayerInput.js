@@ -22,11 +22,13 @@ class PlayerInput extends Component {
     this.props.saveGame(this.state.value);
   }
   render() {
+    const isEnabled = this.state.value.length > 0;
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Your Name" value={this.state.value} onChange={this.handleInput} />
-          <button className="save-button" type="submit">Save</button>
+          <button disabled={!isEnabled} className="save-button" type="submit">Save</button>
         </form>
       </div>
     );
