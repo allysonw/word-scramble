@@ -18,10 +18,16 @@ class WordInput extends Component {
       this.props.onSolved();
     }
 
-    // Update state with current input
-    this.setState({
-      value: e.target.value.toUpperCase()
-    });
+    // Update state with current input, but
+    // only allow input if the letter is in the word
+    const lastLetter = e.target.value.slice(-1).toLowerCase()
+
+    if (this.props.word.letters.includes(lastLetter)) {
+      this.setState({
+        value: e.target.value.toUpperCase()
+      });
+    }
+
   }
 
   // Returns true if user input matches "letters" prop (the solution)
