@@ -65,10 +65,11 @@ export default function gameReducer(state = { loading: false }, action) {
 
       return {...state, words: updatedWords};
 
-    // clear game slice of state for next game after
-    // player requests to quit
+    // set showSolvedGame to true so GamePage will render
+    // all the words as solved when player quits out before
+    // winning
     case 'RESET_GAME':
-      return {};
+      return {...state, showSolvedGame: true };
 
     default:
       return state;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Game from './Game/Game';
+import GameSolution from './GameSolution/GameSolution';
 import LoadingWheel from '../LoadingWheel/LoadingWheel';
 
 import { connect } from 'react-redux';
@@ -22,8 +23,21 @@ class GamePage extends Component {
          <p className="loading-message">Searching the dictionary for the best words for you... </p>
        </div>
 
-     )
+     );
 
+    // If the player quit out of a previous game,
+    // show the solved game and the new game button
+    } else if (this.props.game.showSolvedGame) {
+       this.props.game.words.forEach(word => word.solved = true);
+
+       return (
+         <div>
+           <button className="new-game-button play-button" onClick={this.props.fetchNewGame}>New Game</button>
+           <div>
+             <GameSolution words={this.props.game.words} />
+           </div>
+         </div>
+       );
     // If a game has been loaded, returns the game
     } else if ((this.props.game.id !== undefined) &&
               (this.props.game.loading === false)) {
@@ -33,8 +47,7 @@ class GamePage extends Component {
                   onWordSolved={this.handleWordSolved}
                   saveGame={this.savePlayerInputAndGame} calculateScore={this.props.calculateScore}
                   decrementTimer={this.props.decrementTimer}
-                  quitGame={this.quitGame}
-            />;
+                  quitGame={this.quitGame} />;
 
    // Otherwise, show new game button
    } else {
