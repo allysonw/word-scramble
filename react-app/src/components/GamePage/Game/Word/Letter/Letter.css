@@ -1,27 +1,37 @@
-.letter-unsolved {
+.letter {
   display: inline-block;
   margin: 10px;
   width: 1.5em;
   color: white;
   font-family: 'Fredericka the Great', cursive;
   font-size: 4em;
-  border-color: #3c64c9;
   border-style: solid;
   border-width: 2px;
   border-radius: 15px;
+}
+
+.letter-unsolved {
+  border-color: #3c64c9;
   background-color: #3c64c9;
 }
 
 .letter-solved {
-  display: inline-block;
-  margin: 10px;
-  width: 1.5em;
-  color: white;
-  font-family: 'Fredericka the Great', cursive;
-  font-size: 4em;
   border-color: green;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 15px;
   background-color: green;
+}
+
+@media only screen and (max-width: 767px) {
+
+  .letter {
+    display: inline-block;
+    margin: 3px 3px 10px 3px;
+    width: 1.5em;
+    color: white;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 2.5em;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 15px;
+  }
+
 }

@@ -40,7 +40,7 @@ class WordsApiService
         end
       end
     else
-      words_array = [Word.find(1), Word.find(2), Word.find(3)]
+      words_array = [Word.find(102), Word.find(10), Word.find(541)]
     end
 
     words_array;
