@@ -2,7 +2,7 @@ export default function gameReducer(state = { loading: false }, action) {
   switch (action.type) {
 
     case 'LOADING_GAME':
-      return {...state, loading: true };
+      return { loading: true };
 
     // flatten JS object returned from API into easier
     // to access keys for the game slice of the Redux state object
