@@ -8,6 +8,8 @@
 
 Word Scramble is a fun game where your task is to unscramble scrambled words for points!
 
+Visit the live site [here](https://unscramble-it.herokuapp.com/)!
+
 ![demo](https://media.giphy.com/media/oysCGIV1inoexjw3H9/giphy.gif)
 
 ## Installation
